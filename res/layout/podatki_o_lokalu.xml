@@ -2,5 +2,18 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent" android:orientation="vertical">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="70dip" android:layout_width="match_parent"></LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent">
+        <TextView android:text="               Naslov: " android:id="@+id/txtNaslov" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <TextView android:text="               Dol 15" android:id="@+id/txtVnesenNaslov" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:layout_width="match_parent">
+        <TextView android:text="               Telefon:  " android:id="@+id/txtTelefon" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <TextView android:text="              040584264" android:id="@+id/txtVnesenTelefon" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout4" android:layout_height="wrap_content" android:layout_width="match_parent">
+        <TextView android:text="               Spletna stran:  " android:id="@+id/txtSpletnaStran" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <TextView android:text="    www.tu.si" android:id="@+id/txtVnesenaSpletnaStran" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
 </LinearLayout>
