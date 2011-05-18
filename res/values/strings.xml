@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, Popotnik!</string>
-    <string name="app_name">Popotnik</string>
+	<string name="hello">Hello World, Popotnik!</string>
+	<string name="app_name">Popotnik</string>
+	<string name="footer">This is a demo of the ListView. Click and hold on to one of the items above to show the context menu.</string>
+	<string-array name="menu">
+		<item>Edit</item>
+		<item>Delete</item>
+		<item>Send</item>
+	</string-array>
 </resources>

@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="100dip" android:layout_width="match_parent">
-        <TextView android:text="VREME" android:id="@+id/textView1" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center"></TextView>
+<LinearLayout 
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/size_android">
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="match_parent" android:minHeight="130px">
+        <TextView
+    style="@style/Naslov"
+    android:text="POPOTNIK" android:gravity="center"/>
+   
     </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="match_parent" android:layout_width="match_parent">
-        <TextView android:text="GPS" android:id="@+id/textView2" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center"></TextView>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_width="match_parent" android:minHeight="40px">
+    <TextView
+    style="@style/Tekst"
+    android:text="Izberi način potovanja!" android:gravity="center"/>
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_width="match_parent">
+        <TextView android:text="     " android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <ImageButton android:src="@drawable/ford_mustang" android:id="@+id/ibtnAvto" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@null" android:onClick="naKlik" android:clickable="true"></ImageButton>
+        <TextView android:text="    " android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_width="wrap_content"></TextView>
+        <ImageButton android:src="@drawable/travel_bus" android:id="@+id/ibtnAvtobus" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@null" android:onClick="naKlik" android:clickable="true"></ImageButton>
+        <TextView android:text="    " android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_width="wrap_content"></TextView>
+        <ImageButton android:src="@drawable/train" android:id="@+id/ibtnVlak" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@null" android:onClick="naKlik" android:clickable="true"></ImageButton>
+    </LinearLayout>
+  </LinearLayout>
