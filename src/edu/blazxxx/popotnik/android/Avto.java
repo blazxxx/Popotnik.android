@@ -164,7 +164,7 @@ public class Avto extends MapActivity{
 			return true;
 		case R.id.itemSettings:
 			Intent i = new Intent(this,MenuPreferencesAvto.class);
-			startActivityForResult(i,TEST_START_ACTIVITY_ID);
+			startActivity/*ForResult*/(i/*,TEST_START_ACTIVITY_ID*/);
 			return true;
 
 		default:
@@ -179,12 +179,12 @@ public class Avto extends MapActivity{
 		switch (requestCode) 
 		{
 		case TEST_START_ACTIVITY_ID: 
-			if(app.GetStanje().toString() == "Pot")
+			if(app.GetStanje().toString() == "Pot avto")
 			{
 				Geocoder geoCoder = new Geocoder(this, Locale.getDefault());    
 				try {
 					List<Address> addresses = geoCoder.getFromLocationName(
-							app.GetKonecAvtoStr(), 5);
+							app.GetKonecAvtoStr(), 1);
 					String add = "";
 					if (addresses.size() > 0) {
 						p = new GeoPoint(
@@ -194,6 +194,7 @@ public class Avto extends MapActivity{
 						myMapView.invalidate();
 					}    
 				} catch (IOException e) {
+					
 					e.printStackTrace();
 				}
 			}

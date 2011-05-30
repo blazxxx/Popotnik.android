@@ -76,12 +76,10 @@ public class VnosPotiAvto extends Activity{
     			}
     			else
     			{
-    				//zacetekAvtoStr =zacetekAvto.getText().toString();
     				konecAvtoStr =konecAvto.getText().toString();
     				app.SetKonecAvtoStr(konecAvtoStr);
-    				//app.SetZacetekStr(zacetekAvtoStr);
-    				app.SetStanje("Pot");
-    				VnosPotiAvto.this.setResult(RESULT_OK);
+    				app.SetStanje("Pot avto");
+    				VnosPotiAvto.this.setResult(RESULT_CANCELED);
     				VnosPotiAvto.this.finish();
     			}
     	
