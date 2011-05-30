@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 public class MenuPreferencesAvtobus extends Activity implements OnItemClickListener{
 private String[] Countries = {"Poišèi najbližjo postajo",
+"Doloèi pot",
 "Vozni red",
 "Prikaži lokale",
 "Shrani potovanje",
@@ -43,7 +44,11 @@ private String[] Countries = {"Poišèi najbližjo postajo",
         	   if(((TextView) view).getText().equals("Poišèi najbližjo postajo")){
         	    myIntent = new Intent(view.getContext(), Avto.class);
         	   }
-        	    
+        	   
+        	   if(((TextView) view).getText().equals("Doloèi pot")){
+           	    myIntent = new Intent(view.getContext(), VnosPotiAvtobus.class);
+           	   }
+        	   
         	   if(((TextView) view).getText().equals("Vozni red")){
         	    myIntent = new Intent(view.getContext(), Avto.class);
         	   }

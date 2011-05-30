@@ -11,6 +11,7 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
+import com.google.android.maps.MapView.LayoutParams;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Avtobus extends MapActivity {
@@ -45,11 +48,18 @@ public class Avtobus extends MapActivity {
     setContentView(R.layout.main2);
 
     MapView myMapView = (MapView)findViewById(R.id.myMapView);
+    View zoom = myMapView.getZoomControls();
+    LinearLayout zoomLayout = (LinearLayout)findViewById(R.id.zoom);  
     mapController = myMapView.getController();
+    
+    zoomLayout.addView(zoom, 
+            new LinearLayout.LayoutParams(
+                LayoutParams.WRAP_CONTENT, 
+                LayoutParams.WRAP_CONTENT)); 
+    myMapView.displayZoomControls(true);
 
     myMapView.setSatellite(true);
     myMapView.setStreetView(true);
-    myMapView.displayZoomControls(false);
 
     mapController.setZoom(17);
 

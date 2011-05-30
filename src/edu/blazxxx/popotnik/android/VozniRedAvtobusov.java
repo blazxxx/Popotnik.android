@@ -12,18 +12,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class ShranjenaPotovanja extends Activity{
+public class VozniRedAvtobusov extends Activity{
 	
-	public static final int TEST_START_ACTIVITY_ID = 1;
-	Intent prvi,drugi,tretji;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shranjena_potovanja_list);
+        setContentView(R.layout.vozni_red_avtobusov_list);
+        
+        
     }
+    
+
+	public void onPause()
+	{
+		super.onPause();
+	}
+	
     
   	Menu mMenu;
   	@Override
@@ -37,9 +46,9 @@ public class ShranjenaPotovanja extends Activity{
   	public boolean onOptionsItemSelected(MenuItem item) {
   		switch (item.getItemId()) {
   		case R.id.dialogTest:
-  			ShranjenaPotovanja.this.setResult(RESULT_CANCELED);
-  			ShranjenaPotovanja.this.finish();
-  			return true;
+			VozniRedAvtobusov.this.setResult(RESULT_CANCELED);
+			VozniRedAvtobusov.this.finish();
+			return true;
 
   		default:
   			break;
@@ -47,5 +56,6 @@ public class ShranjenaPotovanja extends Activity{
 
   		return false;
   	}
+
 
 }

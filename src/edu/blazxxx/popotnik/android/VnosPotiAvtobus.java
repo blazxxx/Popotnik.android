@@ -16,20 +16,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class VnosPotiAvto extends Activity{
+public class VnosPotiAvtobus extends Activity{
 	
 	Globalne app;
-	public String zacetekAvtoStr,konecAvtoStr;
-	EditText zacetekAvto,konecAvto;
+	public String zacetekAvtobusStr,konecAvtobusStr;
+	EditText zacetekAvtobus,konecAvtobus;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vnos_poti_avto);
+        setContentView(R.layout.vnos_poti_avtobus);
         app =(Globalne) getApplication();
         
-        //zacetekAvto = (EditText) findViewById(R.id.edittxtZacetek);
-        konecAvto = (EditText) findViewById(R.id.edittxtKonec);
+        zacetekAvtobus = (EditText) findViewById(R.id.edittxtZacetnaPostajaAvtobus);
+        konecAvtobus = (EditText) findViewById(R.id.edittxtKoncnaPostajaAvtobus);
         
         
     }
@@ -53,8 +53,8 @@ public class VnosPotiAvto extends Activity{
   	public boolean onOptionsItemSelected(MenuItem item) {
   		switch (item.getItemId()) {
   		case R.id.dialogTest:
-			VnosPotiAvto.this.setResult(RESULT_CANCELED);
-			VnosPotiAvto.this.finish();
+			VnosPotiAvtobus.this.setResult(RESULT_CANCELED);
+			VnosPotiAvtobus.this.finish();
 			return true;
 
   		default:
@@ -64,25 +64,28 @@ public class VnosPotiAvto extends Activity{
   		return false;
   	}
 
-    public void naKlik2(View v)
+    public void klikAvtobusPostaja(View v)
 	{
-    	if (v.getId()==R.id.ibtnNajdi)
+    	if (v.getId()==R.id.ibtnNajdiAvtobus)
 		{
-    			if(konecAvto.getText().toString()=="")
+    			if((konecAvtobus.getText().toString()=="")||(zacetekAvtobus.getText().toString()==""))
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
-    				VnosPotiAvto.this.setResult(RESULT_CANCELED);
-    				VnosPotiAvto.this.finish();
+    				VnosPotiAvtobus.this.setResult(RESULT_CANCELED);
+    				VnosPotiAvtobus.this.finish();
     			}
     			else
     			{
-    				//zacetekAvtoStr =zacetekAvto.getText().toString();
-    				konecAvtoStr =konecAvto.getText().toString();
-    				app.SetKonecAvtoStr(konecAvtoStr);
-    				//app.SetZacetekStr(zacetekAvtoStr);
-    				app.SetStanje("Pot");
-    				VnosPotiAvto.this.setResult(RESULT_OK);
-    				VnosPotiAvto.this.finish();
+    				zacetekAvtobusStr =zacetekAvtobus.getText().toString();
+    				konecAvtobusStr =konecAvtobus.getText().toString();
+    				app.SetKonecAvtobusStr(konecAvtobusStr);
+    				app.SetZacetekAvtobusStr(zacetekAvtobusStr);
+    				app.SetStanje("PotAvtobus");
+    				Toast.makeText(this,app.GetKonecAvtobusStr() + "  in  " + app.GetZacetekAvtobusStr(),Toast.LENGTH_SHORT).show();
+    				Intent novi = new Intent(this,VozniRedAvtobusov.class);
+    				startActivity(novi);
+    				VnosPotiAvtobus.this.setResult(RESULT_OK);
+    				VnosPotiAvtobus.this.finish();
     			}
     	
 		}

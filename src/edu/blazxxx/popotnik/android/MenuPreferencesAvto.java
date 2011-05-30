@@ -15,10 +15,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MenuPreferencesAvto extends Activity implements OnItemClickListener{
+	private static final int VNESENA_POT_ID=0;
 private String[] Countries = {"Vnesi potovanje",
-"Prikaži pot",
+//"Prikaži pot",
 "Prikaži lokale",
 "Shrani potovanje",
 "Shranjena potovanja"
@@ -41,24 +43,33 @@ private String[] Countries = {"Vnesi potovanje",
       	    
       	   if(((TextView) view).getText().equals("Vnesi potovanje")){
       	    myIntent = new Intent(view.getContext(), VnosPotiAvto.class);
+      	    startActivityForResult(myIntent, VNESENA_POT_ID);
       	   }
       	    
       	   if(((TextView) view).getText().equals("Prikaži pot")){
       	    myIntent = new Intent(view.getContext(), Avto.class);
+      	    MenuPreferencesAvto.this.finish();
+      	  startActivity(myIntent);
       	   }
 
       	   if(((TextView) view).getText().equals("Prikaži lokale")){
       	    myIntent = new Intent(view.getContext(), Avto.class);
+      	    MenuPreferencesAvto.this.finish();
+      	    startActivity(myIntent);
       	   }
       	   if(((TextView) view).getText().equals("Shrani potovanje")){
          	    myIntent = new Intent(view.getContext(), ShraniPotovanje.class);
+         	    MenuPreferencesAvto.this.finish();
+         	   startActivity(myIntent);
          	   }
       	   if(((TextView) view).getText().equals("Shranjena potovanja")){
          	    myIntent = new Intent(view.getContext(), ShranjenaPotovanja.class);
+         	    //MenuPreferencesAvto.this.finish();
+         	    startActivity(myIntent);
          	   }
 
-      	   startActivity(myIntent);
-      	   MenuPreferencesAvto.this.finish();
+      	   
+      	   
 
       	  }
       	 });
@@ -67,5 +78,27 @@ private String[] Countries = {"Vnesi potovanje",
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data){
+
+		// See which child activity is calling us back.
+
+		switch (requestCode) {
+
+		case VNESENA_POT_ID: 
+			if(resultCode == -1)
+			{
+				Toast toast = Toast.makeText(this,"resultCode="+resultCode , Toast.LENGTH_LONG);
+				toast.show();
+				MenuPreferencesAvto.this.finish();
+				break;
+			}
+			else
+			{
+				break;
+			}
+			
+		}
 	}
 }

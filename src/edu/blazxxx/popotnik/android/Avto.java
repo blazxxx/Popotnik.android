@@ -25,104 +25,127 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import com.google.android.maps.MapView.LayoutParams;  
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Avto extends MapActivity {
-  @Override
-  protected boolean isRouteDisplayed() 
-  {
-    return false;
-  }
-  //debug
-  //keytool -list -alias androiddebugkey -keystore /Users/matej/.android/debug.keystore -storepass android -keypass android
-  //8D:22:34:2A:C0:70:9C:0C:B4:A1:AC:B3:C7:12:2D:1C
-  //http://code.google.com/android/maps-api-signup.html
-  MapController mapController;
-  MyPositionOverlay positionOverlay;
+public class Avto extends MapActivity{
+	private LocationListener locListner;
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main2);
+	Globalne app;
 
-    MapView myMapView = (MapView)findViewById(R.id.myMapView);
-    mapController = myMapView.getController();
+	@Override
+	protected boolean isRouteDisplayed() 
+	{
+		return false;
+	}
+	//debug
+	//keytool -list -alias androiddebugkey -keystore /Users/matej/.android/debug.keystore -storepass android -keypass android
+	//8D:22:34:2A:C0:70:9C:0C:B4:A1:AC:B3:C7:12:2D:1C
+	//http://code.google.com/android/maps-api-signup.html
+	MapController mapController;
+	MyPositionOverlay positionOverlay;
+	MapView myMapView;
+	GeoPoint p;
+	Location location;
+	LocationManager locationManager;
+	List<Address> addresses;
 
-    myMapView.setSatellite(true);
-    myMapView.setStreetView(true);
-    myMapView.displayZoomControls(false);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main2);
 
-    mapController.setZoom(17);
-
-    LocationManager locationManager;
-    String context = Context.LOCATION_SERVICE;
-    locationManager = (LocationManager)getSystemService(context);
-   // Add the MyPositionOverlay
-
-    positionOverlay = new MyPositionOverlay();
-    List<Overlay> overlays = myMapView.getOverlays();
-    overlays.add(positionOverlay);
+		app =(Globalne) getApplication();
 
 
-    Criteria criteria = new Criteria();
-    criteria.setAccuracy(Criteria.ACCURACY_FINE);
 
-    criteria.setAltitudeRequired(false);
-    criteria.setBearingRequired(false);
-    criteria.setCostAllowed(true);
-    criteria.setPowerRequirement(Criteria.POWER_LOW);
-    String provider = locationManager.getBestProvider(criteria, true);
-    Location location = locationManager.getLastKnownLocation(provider);
+		myMapView = (MapView)findViewById(R.id.myMapView);
+		View zoom = myMapView.getZoomControls();
+		LinearLayout zoomLayout = (LinearLayout)findViewById(R.id.zoom);  
+		LinearLayout tipPrikaza = (LinearLayout)findViewById(R.id.typeShow);  
+		mapController = myMapView.getController();
 
-    my_updateWithNewLocation(location);
+		myMapView.setSatellite(true);
+		myMapView.setStreetView(true);
+		//myMapView.displayZoomControls(true);
+		zoomLayout.addView(zoom, 
+				new LinearLayout.LayoutParams(
+						LayoutParams.WRAP_CONTENT, 
+						LayoutParams.WRAP_CONTENT)); 
+		myMapView.displayZoomControls(true);
 
-    locationManager.requestLocationUpdates(provider, 2000, 10,   
-        locationListener);
-    
-    
+
+		String context = Context.LOCATION_SERVICE;
+		locationManager = (LocationManager)getSystemService(context);
+		// Add the MyPositionOverlay
+
+		positionOverlay = new MyPositionOverlay();
+		List<Overlay> overlays = myMapView.getOverlays();
+		overlays.add(positionOverlay);
 
 
- }
+		Criteria criteria = new Criteria();
+		criteria.setAccuracy(Criteria.ACCURACY_FINE);
 
-  private final LocationListener locationListener = new LocationListener() 
-{   
-	public void onLocationChanged(Location location) {
-      my_updateWithNewLocation(location);
-    }
+		criteria.setAltitudeRequired(false);
+		criteria.setBearingRequired(false);
+		criteria.setCostAllowed(true);
+		criteria.setPowerRequirement(Criteria.POWER_LOW);
+		String provider = locationManager.getBestProvider(criteria, true);
 
-    public void onProviderDisabled(String provider){
-      my_updateWithNewLocation(null);
-    }
+		location =locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		//Location location = locationManager.getLastKnownLocation(provider);
+		my_updateWithNewLocation(location);
 
-    public void onProviderEnabled(String provider){ }
-    public void onStatusChanged(String provider, int status, 
-        Bundle extras){ }
-  };
+		locationManager.requestLocationUpdates(provider, 2000, 10,   
+				locationListener);
 
-  private void my_updateWithNewLocation(Location location) {
-    String latLongString;    TextView myLocationText;
-    myLocationText = (TextView)findViewById(R.id.myLocationText);
 
-    if (location != null) {
-      positionOverlay.setLocation(location);
 
-      Double geoLat = location.getLatitude()*1E6;
-      Double geoLng = location.getLongitude()*1E6;
-      GeoPoint point = new GeoPoint(geoLat.intValue(), 
-          geoLng.intValue());
 
-      mapController.animateTo(point);
 
-      double lat = location.getLatitude();
-      double lng = location.getLongitude();
-      latLongString = "Lat:" + lat + "\nLong:" + lng;
+	}
 
-      myLocationText.setText("Trenutni položaj je:" + 
-          latLongString); 
-    }
-  }
-  
+	private final LocationListener locationListener = new LocationListener() 
+	{   
+		public void onLocationChanged(Location location) {
+			my_updateWithNewLocation(location);
+		}
+
+		public void onProviderDisabled(String provider){
+			my_updateWithNewLocation(null);
+		}
+
+		public void onProviderEnabled(String provider){ }
+		public void onStatusChanged(String provider, int status, 
+				Bundle extras){ }
+	};
+
+	private void my_updateWithNewLocation(Location location) {
+		String latLongString;    TextView myLocationText;
+		myLocationText = (TextView)findViewById(R.id.myLocationText);
+
+		if (location != null) {
+			positionOverlay.setLocation(location);
+
+			Double geoLat = location.getLatitude()*1E6;
+			Double geoLng = location.getLongitude()*1E6;
+			GeoPoint point = new GeoPoint(geoLat.intValue(), 
+					geoLng.intValue());
+
+			mapController.animateTo(point);
+
+			double lat = location.getLatitude();
+			double lng = location.getLongitude();
+			latLongString = "Lat:" + lat + "\nLong:" + lng;
+
+			myLocationText.setText("Trenutni položaj je:" + 
+					latLongString); 
+		}
+	}
+
 	Menu mMenu;
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -131,6 +154,7 @@ public class Avto extends MapActivity {
 		inflater.inflate(R.menu.main_menu, mMenu);
 		return true;
 	}
+	public static final int TEST_START_ACTIVITY_ID = 1;
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -140,7 +164,7 @@ public class Avto extends MapActivity {
 			return true;
 		case R.id.itemSettings:
 			Intent i = new Intent(this,MenuPreferencesAvto.class);
-			startActivity(i);
+			startActivityForResult(i,TEST_START_ACTIVITY_ID);
 			return true;
 
 		default:
@@ -148,6 +172,36 @@ public class Avto extends MapActivity {
 		}
 
 		return false;
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		switch (requestCode) 
+		{
+		case TEST_START_ACTIVITY_ID: 
+			if(app.GetStanje().toString() == "Pot")
+			{
+				Geocoder geoCoder = new Geocoder(this, Locale.getDefault());    
+				try {
+					List<Address> addresses = geoCoder.getFromLocationName(
+							app.GetKonecAvtoStr(), 5);
+					String add = "";
+					if (addresses.size() > 0) {
+						p = new GeoPoint(
+								(int) (addresses.get(0).getLatitude() * 1E6), 
+								(int) (addresses.get(0).getLongitude() * 1E6));
+						mapController.animateTo(p);    
+						myMapView.invalidate();
+					}    
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				break;
+			}
+		}
 	}
 
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical"  android:background="@drawable/size_android">
+    <TextView style="@style/Tekst" android:text="Začetna destinacija:" android:id="@+id/txt1PostajaAvtobus" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtZacetnaPostajaAvtobus" android:layout_height="wrap_content"></EditText>
+    <TextView style="@style/Tekst" android:text="Končna destinacija:" android:id="@+id/txt2PostajaAvtobus" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtKoncnaPostajaAvtobus" android:layout_height="wrap_content"></EditText>
+    <ImageButton android:src="@drawable/travel_bus" android:id="@+id/ibtnNajdiAvtobus" android:layout_height="wrap_content" android:background="@null" android:onClick="klikAvtobusPostaja" android:clickable="true" android:layout_width="match_parent"></ImageButton>
+</LinearLayout>
