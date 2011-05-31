@@ -1,7 +1,7 @@
 package edu.blazxxx.popotnik.android;
 
 public class PodatkiOPotovanju {
-	public String zacetna,koncna,tip,naslov,delovnik,stran,telefon;
+	public String zacetna="",koncna="",tip="",naslov="",delovnik="",stran="",telefon="";
 	public int id;
 	
 	public void setID(int value)

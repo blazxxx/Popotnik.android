@@ -78,10 +78,10 @@ public class VnosPotiAvtobus extends Activity{
     			{
     				zacetekAvtobusStr =zacetekAvtobus.getText().toString();
     				konecAvtobusStr =konecAvtobus.getText().toString();
-    				app.SetKonecAvtobusStr(konecAvtobusStr);
-    				app.SetZacetekAvtobusStr(zacetekAvtobusStr);
+    				app.SetKonec(konecAvtobusStr);
+    				app.SetZacetek(zacetekAvtobusStr);
     				app.SetStanje("PotAvtobus");
-    				Toast.makeText(this,app.GetKonecAvtobusStr() + "  in  " + app.GetZacetekAvtobusStr(),Toast.LENGTH_SHORT).show();
+    				Toast.makeText(this,app.GetKonec() + "  in  " + app.GetZacetek(),Toast.LENGTH_SHORT).show();
     				Intent novi = new Intent(this,VozniRedAvtobusov.class);
     				startActivity(novi);
     				VnosPotiAvtobus.this.setResult(RESULT_OK);

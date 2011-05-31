@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Avtobus extends MapActivity {
+	Globalne app;
   @Override
   protected boolean isRouteDisplayed() 
   {
@@ -47,6 +48,11 @@ public class Avtobus extends MapActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main2);
 
+    
+    app =(Globalne) getApplication();
+	app.SetTipPrevoza("");
+	app.SetTipPrevoza("Avtobus");
+	
     MapView myMapView = (MapView)findViewById(R.id.myMapView);
     View zoom = myMapView.getZoomControls();
     LinearLayout zoomLayout = (LinearLayout)findViewById(R.id.zoom);  

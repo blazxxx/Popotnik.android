@@ -58,7 +58,8 @@ public class Avto extends MapActivity{
 		setContentView(R.layout.main2);
 
 		app =(Globalne) getApplication();
-
+		app.SetTipPrevoza("");
+		app.SetTipPrevoza("Avto");
 
 
 		myMapView = (MapView)findViewById(R.id.myMapView);
@@ -153,6 +154,7 @@ public class Avto extends MapActivity{
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_menu, mMenu);
 		return true;
+		
 	}
 	public static final int TEST_START_ACTIVITY_ID = 1;
 	@Override
@@ -164,7 +166,7 @@ public class Avto extends MapActivity{
 			return true;
 		case R.id.itemSettings:
 			Intent i = new Intent(this,MenuPreferencesAvto.class);
-			startActivity/*ForResult*/(i/*,TEST_START_ACTIVITY_ID*/);
+			startActivityForResult(i,TEST_START_ACTIVITY_ID);
 			return true;
 
 		default:
@@ -179,28 +181,32 @@ public class Avto extends MapActivity{
 		switch (requestCode) 
 		{
 		case TEST_START_ACTIVITY_ID: 
-			if(app.GetStanje().toString() == "Pot avto")
+			if(resultCode==-1)
 			{
-				Geocoder geoCoder = new Geocoder(this, Locale.getDefault());    
-				try {
-					List<Address> addresses = geoCoder.getFromLocationName(
-							app.GetKonecAvtoStr(), 1);
-					String add = "";
-					if (addresses.size() > 0) {
-						p = new GeoPoint(
-								(int) (addresses.get(0).getLatitude() * 1E6), 
-								(int) (addresses.get(0).getLongitude() * 1E6));
-						mapController.animateTo(p);    
-						myMapView.invalidate();
-					}    
-				} catch (IOException e) {
-					
-					e.printStackTrace();
+				if(app.GetStanje().toString() == "Pot avto")
+				{
+					Geocoder geoCoder = new Geocoder(this, Locale.getDefault());    
+					try {
+						List<Address> addresses = geoCoder.getFromLocationName(
+								app.GetKonec(), 1);
+						String add = "";
+						if (addresses.size() > 0) {
+							p = new GeoPoint(
+									(int) (addresses.get(0).getLatitude() * 1E6), 
+									(int) (addresses.get(0).getLongitude() * 1E6));
+							mapController.animateTo(p);    
+							myMapView.invalidate();
+						}    
+					} catch (IOException e) {
+						Toast toast = Toast.makeText(this,"NAPAKA!!! NE NAJDE LOKACIJE!!!" , Toast.LENGTH_LONG);
+						toast.show();
+						e.printStackTrace();
+					}
 				}
-			}
-			else
-			{
-				break;
+				else if(app.GetStanje().toString() == "Shrani potovanje")
+				{
+					break;
+				}
 			}
 		}
 	}

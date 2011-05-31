@@ -4,27 +4,43 @@ import android.app.Application;
 
 public class Globalne extends Application{
 	
-	public String zacetekVlakStr,konecVlakStr,zacetekAvtobusStr,konecAvtobusStr,konecAvtoStr,stanje;
-	
-	public String GetZacetekVlakStr()
+	public String tipPrevoza="", zacetek="",konec="",stanje="",casPrihoda="",casOdhoda="",datum="";
+	public String imeLokala="",naslov="",delovnik="",stran="",telefon="";
+	public int id;
+	private long dbID;
+	int stevec=0;
+	public Globalne()
 	{
-		return zacetekVlakStr;
+		id=stevec;
+		dbID=stevec;
+		tipPrevoza="";
+		zacetek="";
+		konec="";
+		stanje="";
+		casPrihoda="";
+		casOdhoda="";
+		datum="";
+		imeLokala="";
+		naslov="";
+		delovnik="";
+		stran="";
+		telefon="";
 	}
-	public String GetKonecVlakStr()
+	public String GetZacetek()
 	{
-		return konecVlakStr;
+		return zacetek;
 	}
-	public String GetZacetekAvtobusStr()
+	public void SetZacetek(String value)
 	{
-		return zacetekAvtobusStr;
+		 zacetek=value;
 	}
-	public String GetKonecAvtobusStr()
+	public void SetKonec(String value)
 	{
-		return konecAvtobusStr;
+		 konec=value;
 	}
-	public String GetKonecAvtoStr()
+	public String GetKonec()
 	{
-		return konecAvtoStr;
+		return konec;
 	}
 	public String GetStanje()
 	{
@@ -34,25 +50,92 @@ public class Globalne extends Application{
 	{
 		stanje=vrednost;
 	}
-	public void SetZacetekAvtobusStr(String vrednost)
+	public void SetTipPrevoza(String value)
 	{
-		zacetekAvtobusStr=vrednost;
+		tipPrevoza=value;
 	}
-	public void SetKonecAvtobusStr(String vrednost)
+	public String GetTipPrevoza()
 	{
-		konecAvtobusStr=vrednost;
+		return tipPrevoza;
 	}
-	public void SetZacetekVlakStr(String vrednost)
+	public String GetDatum()
 	{
-		zacetekVlakStr=vrednost;
+		return datum;
 	}
-	public void SetKonecVlakStr(String vrednost)
+	public void SetDatum(String vrednost)
 	{
-		konecVlakStr=vrednost;
+		datum=vrednost;
 	}
-	public void SetKonecAvtoStr(String vrednost)
+	public String GetCasPrihoda()
 	{
-		konecAvtoStr=vrednost;
+		return casPrihoda;
+	}
+	public void SetCasPrihoda(String vrednost)
+	{
+		casPrihoda=vrednost;
+	}
+	public String GetCasOdhoda()
+	{
+		return casOdhoda;
+	}
+	public void SetCasOdhoda(String vrednost)
+	{
+		casOdhoda=vrednost;
+	}
+	public void SetID(int value)
+	{
+		id=value;
+	}
+	public int GetID()
+	{
+		return id;
+	}
+	public void SetImeLokala(String value)
+	{
+		imeLokala=value;
+	}
+	public String GetImeLokala()
+	{
+		return imeLokala;
+	}
+	public void SetNaslov(String value)
+	{
+		naslov=value;
+	}
+	public String GetNaslov()
+	{
+		return naslov;
+	}
+	public void SetDelovnik(String value)
+	{
+		delovnik=value;
+	}
+	public String GetDelovnik()
+	{
+		return delovnik;
+	}
+	public void SetStran(String value)
+	{
+		stran=value;
+	}
+	public String GetStran()
+	{
+		return stran;
+	}
+	public void SetTelefon(String value)
+	{
+		telefon=value;
+	}
+	public String GetTelefon()
+	{
+		return telefon;
+	}
+	public void setDbID(long dbID) {
+		stevec++;
+		this.dbID = dbID;
+	}
+	public long getDbID() {
+		return dbID;
 	}
 
 }

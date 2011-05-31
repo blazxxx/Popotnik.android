@@ -25,6 +25,7 @@ private String[] Countries = {"Poišèi najbližjo postajo",
 "Shranjena potovanja"
 };
 
+private static final int SHRANI_POTOVANJE_ID=1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,10 +58,11 @@ private String[] Countries = {"Poišèi najbližjo postajo",
         	    myIntent = new Intent(view.getContext(), Avto.class);
         	   }
         	   if(((TextView) view).getText().equals("Shrani potovanje")){
-           	    myIntent = new Intent(view.getContext(), Avto.class);
+           	    myIntent = new Intent(view.getContext(), ShraniPotovanje.class);
+           	    startActivityForResult(myIntent,SHRANI_POTOVANJE_ID);
            	   }
         	   if(((TextView) view).getText().equals("Shranjena potovanja")){
-           	    myIntent = new Intent(view.getContext(), Avto.class);
+           	    myIntent = new Intent(view.getContext(), ShranjenaPotovanja.class);
            	   }
 
         	   startActivity(myIntent);

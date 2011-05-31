@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Vlak extends MapActivity {
+	Globalne app;
   @Override
   protected boolean isRouteDisplayed() 
   {
@@ -46,6 +47,10 @@ public class Vlak extends MapActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main2);
+    
+    app =(Globalne) getApplication();
+	app.SetTipPrevoza("");
+	app.SetTipPrevoza("Vlak");
 
     MapView myMapView = (MapView)findViewById(R.id.myMapView);
     mapController = myMapView.getController();

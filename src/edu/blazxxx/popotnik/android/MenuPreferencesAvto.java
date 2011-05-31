@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 public class MenuPreferencesAvto extends Activity implements OnItemClickListener{
 	private static final int VNESENA_POT_ID=0;
+	private static final int SHRANI_POTOVANJE_ID=1;
 private String[] Countries = {"Vnesi potovanje",
 //"Prikaži pot",
 "Prikaži lokale",
@@ -60,7 +61,7 @@ private String[] Countries = {"Vnesi potovanje",
       	   if(((TextView) view).getText().equals("Shrani potovanje")){
          	    myIntent = new Intent(view.getContext(), ShraniPotovanje.class);
          	    MenuPreferencesAvto.this.finish();
-         	   startActivity(myIntent);
+         	   startActivityForResult(myIntent,SHRANI_POTOVANJE_ID);
          	   }
       	   if(((TextView) view).getText().equals("Shranjena potovanja")){
          	    myIntent = new Intent(view.getContext(), ShranjenaPotovanja.class);
@@ -89,8 +90,22 @@ private String[] Countries = {"Vnesi potovanje",
 		case VNESENA_POT_ID: 
 			if(resultCode == -1)
 			{
-				Toast toast = Toast.makeText(this,"resultCode="+resultCode , Toast.LENGTH_LONG);
-				toast.show();
+				/*Toast toast = Toast.makeText(this,"resultCode="+resultCode , Toast.LENGTH_LONG);
+				toast.show();*/
+				MenuPreferencesAvto.this.setResult(RESULT_OK);
+				MenuPreferencesAvto.this.finish();
+				break;
+			}
+			else
+			{
+				break;
+			}
+		case SHRANI_POTOVANJE_ID:
+			if(resultCode == -1)
+			{
+				/*Toast toast = Toast.makeText(this,"resultCode="+resultCode , Toast.LENGTH_LONG);
+				toast.show();*/
+				MenuPreferencesAvto.this.setResult(RESULT_OK);
 				MenuPreferencesAvto.this.finish();
 				break;
 			}

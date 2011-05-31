@@ -15,6 +15,8 @@ public  class DatabaseHelper extends SQLiteOpenHelper
 		"create table "+DBAdapter.TABLE+" ("+DBAdapter._ID+" integer primary key autoincrement, "
 		+ DBAdapter.ZACETEK+" TEXT not null, "+DBAdapter.ZACETNA_LOKACIJA+" STRING, " + DBAdapter.KONEC + " TEXT not null, "
 		+DBAdapter.KONCNA_LOKACIJA + " STRING, " + DBAdapter.TIP + " TEXT not null, " + DBAdapter.TIP_PREVOZA + " STRING, "
+		+ DBAdapter.DATUM + " TEXT not null, " + DBAdapter.DATUM_PREVOZA + " STRING, "+ DBAdapter.CAS_ODHODA + " TEXT not null, " + DBAdapter.CAS_ODHODA_PREVOZA + " STRING, "
+		+ DBAdapter.CAS_PRIHODA + " TEXT not null, " + DBAdapter.CAS_PRIHODA_PREVOZA + " STRING, "+ DBAdapter.IME + " TEXT not null, " + DBAdapter.IME_LOKALA + " STRING, "
 		+ DBAdapter.NASLOV + " TEXT not null, " + DBAdapter.NASLOV_LOKALA + " STRING, " + DBAdapter.DELOVNIK + " TEXT not null, "
 		+DBAdapter.DELOVNIK_LOKALA + " STRING, " + DBAdapter.STRAN + " TEXT not null, " + DBAdapter.STRAN_LOKALA + " STRING, "
 		+DBAdapter.TELEFON + " TEXT not null, "+ DBAdapter.TELEFON_LOKALA + "STRING);";

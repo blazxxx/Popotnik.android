@@ -19,8 +19,8 @@ import android.widget.Toast;
 public class VnosPotiAvto extends Activity{
 	
 	Globalne app;
-	public String zacetekAvtoStr,konecAvtoStr;
-	EditText zacetekAvto,konecAvto;
+	public String konecAvtoStr;
+	EditText konecAvto;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class VnosPotiAvto extends Activity{
         setContentView(R.layout.vnos_poti_avto);
         app =(Globalne) getApplication();
         
-        //zacetekAvto = (EditText) findViewById(R.id.edittxtZacetek);
         konecAvto = (EditText) findViewById(R.id.edittxtKonec);
         
         
@@ -72,14 +71,14 @@ public class VnosPotiAvto extends Activity{
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
     				VnosPotiAvto.this.setResult(RESULT_CANCELED);
-    				VnosPotiAvto.this.finish();
+    				//VnosPotiAvto.this.finish();
     			}
     			else
     			{
     				konecAvtoStr =konecAvto.getText().toString();
-    				app.SetKonecAvtoStr(konecAvtoStr);
+    				app.SetKonec(konecAvto.getText().toString());
     				app.SetStanje("Pot avto");
-    				VnosPotiAvto.this.setResult(RESULT_CANCELED);
+    				VnosPotiAvto.this.setResult(RESULT_OK);
     				VnosPotiAvto.this.finish();
     			}
     	

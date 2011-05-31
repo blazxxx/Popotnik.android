@@ -1,7 +1,7 @@
 package edu.blazxxx.popotnik.android.Database;
 
 
-import edu.blazxxx.popotnik.android.PodatkiOPotovanju;
+import edu.blazxxx.popotnik.android.Globalne;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,25 +12,33 @@ import android.provider.BaseColumns;
 public class DBAdapter implements BaseColumns {
 	public static final  String TAG="DBAdapterStevec";
 
-	public static final  String ZACETNA_LOKACIJA = "i_value";
-	public static final  String ZACETEK = "s_name";
-	public static final  String KONCNA_LOKACIJA = "i_value";
-	public static final  String KONEC = "s_name";
-	public static final  String TIP_PREVOZA = "i_value";
-	public static final  String TIP = "s_name";
-	public static final  String NASLOV_LOKALA = "i_value";
-	public static final  String NASLOV = "s_name";
-	public static final  String DELOVNIK_LOKALA = "i_value";
-	public static final  String DELOVNIK = "s_name";
-	public static final  String STRAN_LOKALA = "i_value";
-	public static final  String STRAN = "s_name";
-	public static final  String TELEFON_LOKALA = "i_value";
-	public static final  String TELEFON = "s_name";
+	public static final  String ZACETNA_LOKACIJA = "zacetna_lokacija_value";
+	public static final  String ZACETEK = "Zacetna lokacija";
+	public static final  String KONCNA_LOKACIJA = "koncna_lokacija_value";
+	public static final  String KONEC = "Koncna lokacija";
+	public static final  String TIP_PREVOZA = "tip_prevoza_value";
+	public static final  String TIP = "Tip prevoza";
+	public static final  String DATUM_PREVOZA = "datum_prevoza_value";
+	public static final  String DATUM = "Datum prevoza";
+	public static final  String CAS_ODHODA_PREVOZA = "cas_odhoda_value";
+	public static final  String CAS_ODHODA = "Cas odhoda";
+	public static final  String CAS_PRIHODA_PREVOZA = "cas_prihoda_value";
+	public static final  String CAS_PRIHODA = "Cas prihoda";
+	public static final  String IME_LOKALA = "ime_lokala_value";
+	public static final  String IME = "Ime lokala";
+	public static final  String NASLOV_LOKALA = "naslov_lokala_value";
+	public static final  String NASLOV = "Naslov lokala";
+	public static final  String DELOVNIK_LOKALA = "delovnik_lokala_value";		//i_value
+	public static final  String DELOVNIK = "Delovnik lokala";
+	public static final  String STRAN_LOKALA = "stran_lokala_value";
+	public static final  String STRAN = "Stran lokala";
+	public static final  String TELEFON_LOKALA = "telefon_lokala_value";
+	public static final  String TELEFON = "Telefon lokala";
 	public static final  int POS__ID=0;
 	public static final  int POS_NAME=1;
 	public static final  int POS_VALUE=2;
 
-	public static final  String TABLE="rezultat";
+	public static final  String TABLE="Potovanje";
 
 
 
@@ -60,23 +68,32 @@ public class DBAdapter implements BaseColumns {
 	}
 
 	//---insert a stevec
-	public long insertStevc(PodatkiOPotovanju podatki) 
+	public long insertPotovanje(Globalne podatki) 
 	{
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(ZACETEK , "Zaèetna lokacija"); 
-		initialValues.put(ZACETNA_LOKACIJA, podatki.getZacetna()); 
+		initialValues.put(ZACETNA_LOKACIJA, podatki.GetZacetek());	
 		initialValues.put(KONEC, "Konèna lokacija"); 
-		initialValues.put(KONCNA_LOKACIJA, podatki.getKoncna());
+		initialValues.put(KONCNA_LOKACIJA, podatki.GetKonec());
 		initialValues.put(TIP, "Tip"); 
-		initialValues.put(TIP_PREVOZA, podatki.getTip());
+		initialValues.put(TIP_PREVOZA, podatki.GetTipPrevoza());
+		initialValues.put(DATUM, "Datum"); 
+		initialValues.put(DATUM_PREVOZA, podatki.GetDatum());
 		initialValues.put(NASLOV, "Naslov"); 
-		initialValues.put(NASLOV_LOKALA, podatki.getNaslov());
+		initialValues.put(CAS_ODHODA, "Cas odhoda"); 
+		initialValues.put(CAS_ODHODA_PREVOZA, podatki.GetCasOdhoda());
+		initialValues.put(CAS_PRIHODA, "Cas prihoda"); 
+		initialValues.put(CAS_PRIHODA_PREVOZA, podatki.GetCasPrihoda());
+		initialValues.put(IME, "Ime");
+		initialValues.put(IME_LOKALA, podatki.GetImeLokala());
+		initialValues.put(NASLOV, "Naslov");
+		initialValues.put(NASLOV_LOKALA, podatki.GetNaslov());
 		initialValues.put(DELOVNIK, "Delovnik"); 
-		initialValues.put(DELOVNIK_LOKALA, podatki.getDelovnik());
+		initialValues.put(DELOVNIK_LOKALA, podatki.GetDelovnik());
 		initialValues.put(STRAN, "Stran"); 
-		initialValues.put(STRAN_LOKALA, podatki.getStran());
+		initialValues.put(STRAN_LOKALA, podatki.GetStran());
 		initialValues.put(TELEFON, "Telefon"); 
-		initialValues.put(TELEFON_LOKALA, podatki.getTelefon());
+		initialValues.put(TELEFON_LOKALA, podatki.GetTelefon());
 		return db.insert(TABLE, null, initialValues);
 	}
 
@@ -97,6 +114,14 @@ public class DBAdapter implements BaseColumns {
 				KONCNA_LOKACIJA,
 				TIP,
 				TIP_PREVOZA,
+				DATUM,
+				DATUM_PREVOZA,
+				CAS_ODHODA,
+				CAS_ODHODA_PREVOZA,
+				CAS_PRIHODA,
+				CAS_PRIHODA_PREVOZA,
+				IME,
+				IME_LOKALA,
 				NASLOV,
 				NASLOV_LOKALA,
 				DELOVNIK,
@@ -124,6 +149,14 @@ public class DBAdapter implements BaseColumns {
 					KONCNA_LOKACIJA,
 					TIP,
 					TIP_PREVOZA,
+					DATUM,
+					DATUM_PREVOZA,
+					CAS_ODHODA,
+					CAS_ODHODA_PREVOZA,
+					CAS_PRIHODA,
+					CAS_PRIHODA_PREVOZA,
+					IME,
+					IME_LOKALA,
 					NASLOV,
 					NASLOV_LOKALA,
 					DELOVNIK,
@@ -145,25 +178,34 @@ public class DBAdapter implements BaseColumns {
 	}
 
 	//---update---
-	public boolean updateStevec(PodatkiOPotovanju podatki) 
+	public boolean updatePotovanje(Globalne podatki) 
 	{
 		ContentValues args = new ContentValues();
 		args.put(ZACETEK , "Zaèetna lokacija"); 
-		args.put(ZACETNA_LOKACIJA, podatki.getZacetna()); 
+		args.put(ZACETNA_LOKACIJA, podatki.GetZacetek()); 
 		args.put(KONEC, "Konèna lokacija"); 
-		args.put(KONCNA_LOKACIJA, podatki.getKoncna());
-		args.put(TIP, "Tip"); 
-		args.put(TIP_PREVOZA, podatki.getTip());
+		args.put(KONCNA_LOKACIJA, podatki.GetKonec());
+		args.put(TIP, "Tip prevoza"); 
+		args.put(TIP_PREVOZA, podatki.GetTipPrevoza());
+		args.put(DATUM, "Datum"); 
+		args.put(DATUM_PREVOZA, podatki.GetDatum());
 		args.put(NASLOV, "Naslov"); 
-		args.put(NASLOV_LOKALA, podatki.getNaslov());
+		args.put(CAS_ODHODA, "Cas odhoda"); 
+		args.put(CAS_ODHODA_PREVOZA, podatki.GetCasOdhoda());
+		args.put(CAS_PRIHODA, "Cas prihoda"); 
+		args.put(CAS_PRIHODA_PREVOZA, podatki.GetCasPrihoda());
+		args.put(IME, "Ime");
+		args.put(IME_LOKALA, podatki.GetImeLokala());
+		args.put(NASLOV, "Naslov lokala"); 
+		args.put(NASLOV_LOKALA, podatki.GetNaslov());
 		args.put(DELOVNIK, "Delovnik"); 
-		args.put(DELOVNIK_LOKALA, podatki.getDelovnik());
+		args.put(DELOVNIK_LOKALA, podatki.GetDelovnik());
 		args.put(STRAN, "Stran"); 
-		args.put(STRAN_LOKALA, podatki.getStran());
+		args.put(STRAN_LOKALA, podatki.GetStran());
 		args.put(TELEFON, "Telefon"); 
-		args.put(TELEFON_LOKALA, podatki.getTelefon());
+		args.put(TELEFON_LOKALA, podatki.GetTelefon());
 		return db.update(TABLE, args, 
-				_ID + "=" + podatki.getID(), null) > 0;
+				_ID + "=" + podatki.GetID(), null) > 0;
 	}
 
 

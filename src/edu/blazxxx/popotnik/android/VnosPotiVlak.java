@@ -72,19 +72,18 @@ public class VnosPotiVlak extends Activity{
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
     				VnosPotiVlak.this.setResult(RESULT_CANCELED);
-    				VnosPotiVlak.this.finish();
+    				//VnosPotiVlak.this.finish();
     			}
     			else
     			{
     				zacetekVlakStr =zacetekVlak.getText().toString();
     				konecVlakStr =konecVlak.getText().toString();
-    				app.SetKonecVlakStr(konecVlakStr);
-    				app.SetZacetekVlakStr(zacetekVlakStr);
+    				app.SetKonec(konecVlakStr);
+    				app.SetZacetek(zacetekVlakStr);
     				app.SetStanje("PotVlak");
-    				Toast.makeText(this,app.GetKonecVlakStr() + "  in  " + app.GetZacetekVlakStr(),Toast.LENGTH_SHORT).show();
+    				Toast.makeText(this,app.GetKonec() + "  in  " + app.GetZacetek(),Toast.LENGTH_SHORT).show();
     				Intent novi = new Intent(this,VozniRedVlakov.class);
     				startActivity(novi);
-    				VnosPotiVlak.this.setResult(RESULT_CANCELED);
     				VnosPotiVlak.this.setResult(RESULT_OK);
     				VnosPotiVlak.this.finish();
     			}
