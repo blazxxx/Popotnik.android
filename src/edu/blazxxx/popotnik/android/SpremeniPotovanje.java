@@ -109,10 +109,10 @@ public class SpremeniPotovanje extends Activity implements OnClickListener{
 
 					prviTxt.setText("Zaèetna lokacija: ");
 					drugiTxt.setText("Konèna lokacija:  ");
-					tretjiTxt.setText("Tip prevoza:      ");
-					desetiTxt.setText("Datum:            ");
-					cetrtiTxt.setText("Èas odhoda:       ");
-					petiTxt.setText("Èas prihoda:      ");	
+					tretjiTxt.setText("Tip prevoza:        ");
+					desetiTxt.setText("Datum:                ");
+					cetrtiTxt.setText("Èas odhoda:        ");
+					petiTxt.setText("Èas prihoda:        ");	
 					
 				}
 				else if (position==1)
@@ -141,11 +141,11 @@ public class SpremeniPotovanje extends Activity implements OnClickListener{
 					enajstiTxt.setVisibility(View.VISIBLE);
 					enajstiEdit.setVisibility(View.VISIBLE);
 
-					enajstiTxt.setText("Ime:              ");
-					sestiTxt.setText("Kraj:             ");
-					sedmiTxt.setText("Delovni èas:      ");
-					osmiTxt.setText("Spletna stran:    ");
-					devetiTxt.setText("Telefon:          ");
+					enajstiTxt.setText("Ime:                     ");
+					sestiTxt.setText("Kraj:                     ");
+					sedmiTxt.setText("Delovni èas:         ");
+					osmiTxt.setText("Spletna stran:     ");
+					devetiTxt.setText("Telefon:               ");
 				}
 			}
 
@@ -165,7 +165,7 @@ public class SpremeniPotovanje extends Activity implements OnClickListener{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		mMenu = menu;
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_menu, mMenu);
+		inflater.inflate(R.menu.nazaj_menu, mMenu);
 		return true;
 	}
 	@Override

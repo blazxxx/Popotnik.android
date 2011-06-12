@@ -30,7 +30,7 @@ public class ShranjenaPotovanja extends Activity{
   	public boolean onCreateOptionsMenu(Menu menu) {
   		mMenu = menu;
   		MenuInflater inflater = getMenuInflater();
-  		inflater.inflate(R.menu.main_menu, mMenu);
+  		inflater.inflate(R.menu.nazaj_menu, mMenu);
   		return true;
   	}
   	@Override

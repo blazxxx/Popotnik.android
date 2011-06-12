@@ -36,4 +36,18 @@
         <item name="android:textColor">#33FF00</item>
         <item name="android:textSize">15sp</item>
     </style>
+            <style name="tekstVrednosti" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#990099</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="tekstVreme" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="tekstVremeNaslov" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#990099</item>
+        <item name="android:textSize">25sp</item>
+    </style>
 </resources>

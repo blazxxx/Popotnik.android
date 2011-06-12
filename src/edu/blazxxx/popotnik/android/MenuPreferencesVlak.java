@@ -17,25 +17,32 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MenuPreferencesVlak extends Activity implements OnItemClickListener{
-private String[] Countries = {"Poišèi najbližjo postajo",
+private String[] Vsebina = {"Poišèi najbližjo postajo",
 "Doloèi pot",
 "Vozni red",
 "Prikaži lokale",
 "Shrani potovanje",
-"Shranjena potovanja"
+"Shranjena potovanja",
+"Novo potovanje",
+"Vreme"
 };
 
 private static final int SHRANI_POTOVANJE_ID=1;
+private static final int VNESENA_POT_ID=0;
+
+Globalne app;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listmenu);
-        
+        app =(Globalne) getApplication();
         ListView list = (ListView)findViewById(R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listitem, Countries);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listitem, Vsebina);
         list.setAdapter(adapter);
         list.setClickable(true);
+        MenuPreferencesVlak.this.setResult(RESULT_CANCELED);
         list.setOnItemClickListener(new OnItemClickListener() {
       	  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
       	    
@@ -49,12 +56,12 @@ private static final int SHRANI_POTOVANJE_ID=1;
       	    
       	 if(((TextView) view).getText().equals("Doloèi pot")){
         	    myIntent = new Intent(view.getContext(), VnosPotiVlak.class);
-        	    startActivity(myIntent);
+        	    startActivityForResult(myIntent, VNESENA_POT_ID);
         	    MenuPreferencesVlak.this.finish();
         	   }
       	 
       	   if(((TextView) view).getText().equals("Vozni red")){
-      	    myIntent = new Intent(view.getContext(), Vlak.class);
+      	    myIntent = new Intent(view.getContext(), VozniRedVlakov.class);
       	    startActivity(myIntent);
       	  MenuPreferencesVlak.this.finish();
       	   }
@@ -73,6 +80,27 @@ private static final int SHRANI_POTOVANJE_ID=1;
          	   startActivity(myIntent);
          	   MenuPreferencesVlak.this.finish();
          	   }
+      	 if(((TextView) view).getText().equals("Novo potovanje")){
+       	    myIntent = new Intent(view.getContext(), Popotnik.class);
+			app.SetZacetek("");
+			app.SetKonec("");
+			app.SetTipPrevoza("");
+			app.SetDatum("");
+			app.SetCasOdhoda("");
+			app.SetCasPrihoda("");
+			app.SetImeLokala("");
+			app.SetNaslov("");
+			app.SetDelovnik("");
+			app.SetStran("");
+			app.SetTelefon("");
+       	 startActivity(myIntent);
+  	   MenuPreferencesVlak.this.finish();
+       	   }
+      	if(((TextView) view).getText().equals("Vreme")){
+     	    myIntent = new Intent(view.getContext(), Vreme.class);
+     	   startActivity(myIntent);
+     	   MenuPreferencesVlak.this.finish();
+     	   }
 
 
       	  }

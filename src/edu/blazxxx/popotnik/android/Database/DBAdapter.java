@@ -13,32 +13,41 @@ public class DBAdapter implements BaseColumns {
 	public static final  String TAG="DBAdapterStevec";
 
 	public static final  String ZACETNA_LOKACIJA = "zacetna_lokacija_value";
-	public static final  String ZACETEK = "Zacetna lokacija";
+	public static final  String ZACETEK = "Zacetna";
 	public static final  String KONCNA_LOKACIJA = "koncna_lokacija_value";
-	public static final  String KONEC = "Koncna lokacija";
+	public static final  String KONEC = "Koncna";
 	public static final  String TIP_PREVOZA = "tip_prevoza_value";
-	public static final  String TIP = "Tip prevoza";
+	public static final  String TIP = "Tip";
 	public static final  String DATUM_PREVOZA = "datum_prevoza_value";
-	public static final  String DATUM = "Datum prevoza";
+	public static final  String DATUM = "Datum";
 	public static final  String CAS_ODHODA_PREVOZA = "cas_odhoda_value";
-	public static final  String CAS_ODHODA = "Cas odhoda";
+	public static final  String CAS_ODHODA = "Odhod";
 	public static final  String CAS_PRIHODA_PREVOZA = "cas_prihoda_value";
-	public static final  String CAS_PRIHODA = "Cas prihoda";
+	public static final  String CAS_PRIHODA = "Prihod";
 	public static final  String IME_LOKALA = "ime_lokala_value";
-	public static final  String IME = "Ime lokala";
+	public static final  String IME = "Ime";
 	public static final  String NASLOV_LOKALA = "naslov_lokala_value";
-	public static final  String NASLOV = "Naslov lokala";
+	public static final  String NASLOV = "Naslov";
 	public static final  String DELOVNIK_LOKALA = "delovnik_lokala_value";		//i_value
-	public static final  String DELOVNIK = "Delovnik lokala";
+	public static final  String DELOVNIK = "Delovnik";
 	public static final  String STRAN_LOKALA = "stran_lokala_value";
-	public static final  String STRAN = "Stran lokala";
+	public static final  String STRAN = "Stran";
 	public static final  String TELEFON_LOKALA = "telefon_lokala_value";
-	public static final  String TELEFON = "Telefon lokala";
+	public static final  String TELEFON = "Telefon";
 	public static final  int POS__ID=0;
-	public static final  int POS_NAME=1;
-	public static final  int POS_VALUE=2;
+	public static final  int POS_ZACETEK=1;
+	public static final  int POS_KONEC=2;
+	public static final  int POS__TIP=3;
+	public static final  int POS_DATUM=4;
+	public static final  int POS_ODHOD=5;
+	public static final  int POS__PRIHOD=6;
+	public static final  int POS_IME=7;
+	public static final  int POS_NASLOV=8;
+	public static final  int POS__DELOVNIK=9;
+	public static final  int POS_STRAN=10;
+	public static final  int POS_TELEFON=11;
 
-	public static final  String TABLE="Potovanje";
+	public static final  String TABLE="potovanje";
 
 
 
@@ -71,18 +80,18 @@ public class DBAdapter implements BaseColumns {
 	public long insertPotovanje(Globalne podatki) 
 	{
 		ContentValues initialValues = new ContentValues();
-		initialValues.put(ZACETEK , "Zaèetna lokacija"); 
+		initialValues.put(ZACETEK , "Zacetna"); 
 		initialValues.put(ZACETNA_LOKACIJA, podatki.GetZacetek());	
-		initialValues.put(KONEC, "Konèna lokacija"); 
+		initialValues.put(KONEC, "Koncna"); 
 		initialValues.put(KONCNA_LOKACIJA, podatki.GetKonec());
 		initialValues.put(TIP, "Tip"); 
 		initialValues.put(TIP_PREVOZA, podatki.GetTipPrevoza());
 		initialValues.put(DATUM, "Datum"); 
 		initialValues.put(DATUM_PREVOZA, podatki.GetDatum());
 		initialValues.put(NASLOV, "Naslov"); 
-		initialValues.put(CAS_ODHODA, "Cas odhoda"); 
+		initialValues.put(CAS_ODHODA, "Odhod"); 
 		initialValues.put(CAS_ODHODA_PREVOZA, podatki.GetCasOdhoda());
-		initialValues.put(CAS_PRIHODA, "Cas prihoda"); 
+		initialValues.put(CAS_PRIHODA, "Prihod"); 
 		initialValues.put(CAS_PRIHODA_PREVOZA, podatki.GetCasPrihoda());
 		initialValues.put(IME, "Ime");
 		initialValues.put(IME_LOKALA, podatki.GetImeLokala());
@@ -138,7 +147,7 @@ public class DBAdapter implements BaseColumns {
 	}
 
 	//---retrieves a particular title---
-	public Cursor getStevec(long rowId) throws SQLException 
+	public Cursor getPotovanje(long rowId) throws SQLException 
 	{
 		Cursor mCursor =
 			db.query(true, TABLE, new String[] {
@@ -181,22 +190,22 @@ public class DBAdapter implements BaseColumns {
 	public boolean updatePotovanje(Globalne podatki) 
 	{
 		ContentValues args = new ContentValues();
-		args.put(ZACETEK , "Zaèetna lokacija"); 
+		args.put(ZACETEK , "Zacetna"); 
 		args.put(ZACETNA_LOKACIJA, podatki.GetZacetek()); 
-		args.put(KONEC, "Konèna lokacija"); 
+		args.put(KONEC, "Koncna"); 
 		args.put(KONCNA_LOKACIJA, podatki.GetKonec());
-		args.put(TIP, "Tip prevoza"); 
+		args.put(TIP, "Tip"); 
 		args.put(TIP_PREVOZA, podatki.GetTipPrevoza());
 		args.put(DATUM, "Datum"); 
 		args.put(DATUM_PREVOZA, podatki.GetDatum());
 		args.put(NASLOV, "Naslov"); 
-		args.put(CAS_ODHODA, "Cas odhoda"); 
+		args.put(CAS_ODHODA, "Odhod"); 
 		args.put(CAS_ODHODA_PREVOZA, podatki.GetCasOdhoda());
-		args.put(CAS_PRIHODA, "Cas prihoda"); 
+		args.put(CAS_PRIHODA, "Prihoda"); 
 		args.put(CAS_PRIHODA_PREVOZA, podatki.GetCasPrihoda());
 		args.put(IME, "Ime");
 		args.put(IME_LOKALA, podatki.GetImeLokala());
-		args.put(NASLOV, "Naslov lokala"); 
+		args.put(NASLOV, "Naslov"); 
 		args.put(NASLOV_LOKALA, podatki.GetNaslov());
 		args.put(DELOVNIK, "Delovnik"); 
 		args.put(DELOVNIK_LOKALA, podatki.GetDelovnik());

@@ -20,7 +20,7 @@ public class VnosPotiAvto extends Activity{
 	
 	Globalne app;
 	public String konecAvtoStr;
-	EditText konecAvto;
+	EditText konecAvto,casOdhoda,datum;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class VnosPotiAvto extends Activity{
         app =(Globalne) getApplication();
         
         konecAvto = (EditText) findViewById(R.id.edittxtKonec);
+        casOdhoda = (EditText) findViewById(R.id.edittxtCasOdhoda);
+        datum = (EditText) findViewById(R.id.edittxtDatum);
         
         
     }
@@ -45,7 +47,7 @@ public class VnosPotiAvto extends Activity{
   	public boolean onCreateOptionsMenu(Menu menu) {
   		mMenu = menu;
   		MenuInflater inflater = getMenuInflater();
-  		inflater.inflate(R.menu.zacetni_menu, mMenu);
+  		inflater.inflate(R.menu.nazaj_menu, mMenu);
   		return true;
   	}
   	@Override
@@ -67,7 +69,7 @@ public class VnosPotiAvto extends Activity{
 	{
     	if (v.getId()==R.id.ibtnNajdi)
 		{
-    			if(konecAvto.getText().toString()=="")
+    			if((datum.getText().toString()=="")||(konecAvto.getText().toString()=="")||(casOdhoda.getText().toString()==""))
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
     				VnosPotiAvto.this.setResult(RESULT_CANCELED);
@@ -75,8 +77,9 @@ public class VnosPotiAvto extends Activity{
     			}
     			else
     			{
-    				konecAvtoStr =konecAvto.getText().toString();
     				app.SetKonec(konecAvto.getText().toString());
+    				app.SetCasOdhoda(casOdhoda.getText().toString());
+    				app.SetDatum(datum.getText().toString());
     				app.SetStanje("Pot avto");
     				VnosPotiAvto.this.setResult(RESULT_OK);
     				VnosPotiAvto.this.finish();

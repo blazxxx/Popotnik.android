@@ -14,7 +14,7 @@
 		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
 			android:id="@+id/txtShrani2" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
-		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
 			android:id="@+id/txtShrani3" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
 	</LinearLayout>
@@ -24,7 +24,7 @@
 		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
 			android:id="@+id/txtShrani4" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
-		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
 			android:id="@+id/txtShrani5" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
 	</LinearLayout>
@@ -34,7 +34,7 @@
 		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
 			android:id="@+id/txtShrani6" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
-		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
 			android:id="@+id/txtShrani7" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
 	</LinearLayout>
@@ -44,7 +44,7 @@
 		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
 			android:id="@+id/txtShrani8" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
-		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
 			android:id="@+id/txtShrani9" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
 	</LinearLayout>
@@ -54,7 +54,7 @@
 		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
 			android:id="@+id/txtShrani10" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
-		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
 			android:id="@+id/txtShrani11" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
 	</LinearLayout>
@@ -64,7 +64,7 @@
 		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
 			android:id="@+id/txtShrani12" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
-		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
 			android:id="@+id/txtShrani13" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></TextView>
 	</LinearLayout>

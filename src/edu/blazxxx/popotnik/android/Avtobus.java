@@ -28,9 +28,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Avtobus extends MapActivity {
 	Globalne app;
+
+	MapView myMapView;
+	GeoPoint p;
+	Location location;
+	LocationManager locationManager;
+	List<Address> addresses;
   @Override
   protected boolean isRouteDisplayed() 
   {
@@ -143,6 +150,7 @@ public class Avtobus extends MapActivity {
 		inflater.inflate(R.menu.main_menu, mMenu);
 		return true;
 	}
+	public static final int TEST_START_ACTIVITY_ID = 1;
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -152,7 +160,7 @@ public class Avtobus extends MapActivity {
 			return true;
 		case R.id.itemSettings:
 			Intent i = new Intent(this,MenuPreferencesAvtobus.class);
-			startActivity(i);
+			startActivityForResult(i,TEST_START_ACTIVITY_ID);
 			return true;
 
 		default:
@@ -160,5 +168,39 @@ public class Avtobus extends MapActivity {
 		}
 
 		return false;
+	}
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		switch (requestCode) 
+		{
+		case TEST_START_ACTIVITY_ID: 
+			if(resultCode==-1)
+			{
+				if(app.GetStanje().toString() == "Pot vlak")
+				{
+					Geocoder geoCoder = new Geocoder(this, Locale.getDefault());    
+					try {
+						List<Address> addresses = geoCoder.getFromLocationName(
+								app.GetKonec(), 1);
+						String add = "";
+						if (addresses.size() > 0) {
+							p = new GeoPoint(
+									(int) (addresses.get(0).getLatitude() * 1E6), 
+									(int) (addresses.get(0).getLongitude() * 1E6));
+							mapController.animateTo(p);    
+							myMapView.invalidate();
+						}    
+					} catch (IOException e) {
+						Toast toast = Toast.makeText(this,"NAPAKA!!! NE NAJDE LOKACIJE!!!" , Toast.LENGTH_LONG);
+						toast.show();
+						e.printStackTrace();
+					}
+				}
+				else if(app.GetStanje().toString() == "Shrani potovanje")
+				{
+					break;
+				}
+			}
+		}
 	}
 }

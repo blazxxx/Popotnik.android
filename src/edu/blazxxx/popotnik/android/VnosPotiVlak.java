@@ -20,7 +20,7 @@ public class VnosPotiVlak extends Activity{
 	
 	Globalne app;
 	public String zacetekVlakStr,konecVlakStr;
-	EditText zacetekVlak,konecVlak;
+	EditText zacetekVlak,konecVlak,datum;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class VnosPotiVlak extends Activity{
         
         zacetekVlak = (EditText) findViewById(R.id.edittxtZacetnaPostajaVlak);
         konecVlak = (EditText) findViewById(R.id.edittxtKoncnaPostajaVlak);
-        
+        datum = (EditText) findViewById(R.id.edittxtDatumVlak);
         
     }
     
@@ -46,7 +46,7 @@ public class VnosPotiVlak extends Activity{
   	public boolean onCreateOptionsMenu(Menu menu) {
   		mMenu = menu;
   		MenuInflater inflater = getMenuInflater();
-  		inflater.inflate(R.menu.zacetni_menu, mMenu);
+  		inflater.inflate(R.menu.nazaj_menu, mMenu);
   		return true;
   	}
   	@Override
@@ -68,7 +68,7 @@ public class VnosPotiVlak extends Activity{
 	{
     	if (v.getId()==R.id.ibtnNajdiVlak)
 		{
-    			if((konecVlak.getText().toString()=="")||(zacetekVlak.getText().toString()==""))
+    			if((datum.getText().toString()=="")||(konecVlak.getText().toString()=="")||(zacetekVlak.getText().toString()==""))
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
     				VnosPotiVlak.this.setResult(RESULT_CANCELED);
@@ -76,14 +76,11 @@ public class VnosPotiVlak extends Activity{
     			}
     			else
     			{
-    				zacetekVlakStr =zacetekVlak.getText().toString();
-    				konecVlakStr =konecVlak.getText().toString();
-    				app.SetKonec(konecVlakStr);
-    				app.SetZacetek(zacetekVlakStr);
-    				app.SetStanje("PotVlak");
-    				Toast.makeText(this,app.GetKonec() + "  in  " + app.GetZacetek(),Toast.LENGTH_SHORT).show();
-    				Intent novi = new Intent(this,VozniRedVlakov.class);
-    				startActivity(novi);
+    				app.SetKonec(konecVlak.getText().toString());
+    				app.SetZacetek(zacetekVlak.getText().toString());
+    				app.SetDatum(datum.getText().toString());
+    				app.SetStanje("");
+    				app.SetStanje("Pot vlak");
     				VnosPotiVlak.this.setResult(RESULT_OK);
     				VnosPotiVlak.this.finish();
     			}

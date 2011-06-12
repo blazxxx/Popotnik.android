@@ -20,22 +20,25 @@ import android.widget.Toast;
 public class MenuPreferencesAvto extends Activity implements OnItemClickListener{
 	private static final int VNESENA_POT_ID=0;
 	private static final int SHRANI_POTOVANJE_ID=1;
-private String[] Countries = {"Vnesi potovanje",
+private String[] Vsebina = {"Vnesi potovanje",
 //"Prikaži pot",
 "Prikaži lokale",
 "Shrani potovanje",
-"Shranjena potovanja"
+"Shranjena potovanja",
+"Novo potovanje",
+"Vreme"
 };
 
-
+Globalne app;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listmenu);
-        
+        app =(Globalne) getApplication();
         ListView list = (ListView)findViewById(R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listitem, Countries);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listitem, Vsebina);
         list.setAdapter(adapter);
+        MenuPreferencesAvto.this.setResult(RESULT_CANCELED);
         //list.setClickable(true);
         list.setOnItemClickListener(new OnItemClickListener() {
       	  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -68,7 +71,27 @@ private String[] Countries = {"Vnesi potovanje",
          	    //MenuPreferencesAvto.this.finish();
          	    startActivity(myIntent);
          	   }
-
+      	 if(((TextView) view).getText().equals("Novo potovanje")){
+        	    myIntent = new Intent(view.getContext(), Popotnik.class);
+ 			app.SetZacetek("");
+ 			app.SetKonec("");
+ 			app.SetTipPrevoza("");
+ 			app.SetDatum("");
+ 			app.SetCasOdhoda("");
+ 			app.SetCasPrihoda("");
+ 			app.SetImeLokala("");
+ 			app.SetNaslov("");
+ 			app.SetDelovnik("");
+ 			app.SetStran("");
+ 			app.SetTelefon("");
+        	 startActivity(myIntent);
+   	   MenuPreferencesAvto.this.finish();
+        	   }
+      	if(((TextView) view).getText().equals("Vreme")){
+     	    myIntent = new Intent(view.getContext(), Vreme.class);
+     	   startActivity(myIntent);
+     	   MenuPreferencesAvto.this.finish();
+     	   }
       	   
       	   
 

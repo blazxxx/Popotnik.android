@@ -20,7 +20,7 @@ public class VnosPotiAvtobus extends Activity{
 	
 	Globalne app;
 	public String zacetekAvtobusStr,konecAvtobusStr;
-	EditText zacetekAvtobus,konecAvtobus;
+	EditText zacetekAvtobus,konecAvtobus,datum;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class VnosPotiAvtobus extends Activity{
         
         zacetekAvtobus = (EditText) findViewById(R.id.edittxtZacetnaPostajaAvtobus);
         konecAvtobus = (EditText) findViewById(R.id.edittxtKoncnaPostajaAvtobus);
-        
+        datum = (EditText) findViewById(R.id.edittxtDatumAvtobus);
         
     }
     
@@ -46,7 +46,7 @@ public class VnosPotiAvtobus extends Activity{
   	public boolean onCreateOptionsMenu(Menu menu) {
   		mMenu = menu;
   		MenuInflater inflater = getMenuInflater();
-  		inflater.inflate(R.menu.zacetni_menu, mMenu);
+  		inflater.inflate(R.menu.nazaj_menu, mMenu);
   		return true;
   	}
   	@Override
@@ -68,7 +68,7 @@ public class VnosPotiAvtobus extends Activity{
 	{
     	if (v.getId()==R.id.ibtnNajdiAvtobus)
 		{
-    			if((konecAvtobus.getText().toString()=="")||(zacetekAvtobus.getText().toString()==""))
+    			if((datum.getText().toString()=="")||(konecAvtobus.getText().toString()=="")||(zacetekAvtobus.getText().toString()==""))
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
     				VnosPotiAvtobus.this.setResult(RESULT_CANCELED);
@@ -76,14 +76,11 @@ public class VnosPotiAvtobus extends Activity{
     			}
     			else
     			{
-    				zacetekAvtobusStr =zacetekAvtobus.getText().toString();
-    				konecAvtobusStr =konecAvtobus.getText().toString();
-    				app.SetKonec(konecAvtobusStr);
-    				app.SetZacetek(zacetekAvtobusStr);
-    				app.SetStanje("PotAvtobus");
-    				Toast.makeText(this,app.GetKonec() + "  in  " + app.GetZacetek(),Toast.LENGTH_SHORT).show();
-    				Intent novi = new Intent(this,VozniRedAvtobusov.class);
-    				startActivity(novi);
+    				app.SetKonec(konecAvtobus.getText().toString());
+    				app.SetZacetek(zacetekAvtobus.getText().toString());
+    				app.SetDatum(datum.getText().toString());
+    				app.SetStanje("");
+    				app.SetStanje("Pot avtobus");
     				VnosPotiAvtobus.this.setResult(RESULT_OK);
     				VnosPotiAvtobus.this.finish();
     			}

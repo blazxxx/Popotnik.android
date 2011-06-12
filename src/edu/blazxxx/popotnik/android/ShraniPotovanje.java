@@ -39,9 +39,16 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 	TextView drugi,tretji,cetrti,peti,sesti,sedmi, osmi, deveti, deseti, enajsti, dvanajsti, trinajsti;
 	ArrayAdapter adapter;
 	DBAdapter db;
+
 	
 	public void addDB(Globalne g) {
+		
+
+
+		
 		db.open();
+		Toast toast = Toast.makeText(this,g.GetZacetek() + "  "  + g.GetKonec(), Toast.LENGTH_LONG);
+		toast.show();
 		g.setDbID(db.insertPotovanje(g));
 		db.close();	
 	}
@@ -168,7 +175,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		mMenu = menu;
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_menu, mMenu);
+		inflater.inflate(R.menu.nazaj_menu, mMenu);
 		return true;
 	}
 	@Override
@@ -206,6 +213,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 			zacasni.SetDelovnik(app.GetDelovnik());
 			zacasni.SetStran(app.GetStran());
 			zacasni.SetTelefon(app.GetTelefon());
+			Toast.makeText(this,zacasni.GetZacetek() + "  in  " + zacasni.GetKonec(),Toast.LENGTH_SHORT).show();
 			addDB(zacasni);
 		}
 
@@ -223,10 +231,10 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 					dvanajsti.setVisibility(View.VISIBLE);
 					trinajsti.setVisibility(View.VISIBLE);
 					tretji.setText(app.GetZacetek());
-					peti.setText(app.GetKonec());
-					sedmi.setText(app.GetTipPrevoza());
-					deveti.setText(app.GetCasOdhoda());
-					enajsti.setText(app.GetCasPrihoda());
+					peti.setText("\n" +app.GetKonec());
+					sedmi.setText("\n" +app.GetTipPrevoza());
+					deveti.setText("\n" +app.GetCasOdhoda());
+					enajsti.setText("\n" +app.GetCasPrihoda());
 					trinajsti.setText("\n" +app.GetCasPrihoda()+"\n" + "\n");
 				}
 				else if(app.GetStanje()=="Lokal")

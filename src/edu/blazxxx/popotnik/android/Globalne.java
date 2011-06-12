@@ -12,7 +12,7 @@ public class Globalne extends Application{
 	public Globalne()
 	{
 		id=stevec;
-		dbID=stevec;
+		dbID=0;
 		tipPrevoza="";
 		zacetek="";
 		konec="";

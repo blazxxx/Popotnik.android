@@ -7,5 +7,7 @@
     <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtZacetnaPostajaVlak" android:layout_height="wrap_content"></EditText>
     <TextView style="@style/Tekst" android:text="Končna postaja:" android:id="@+id/txt2PostajaVlak" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtKoncnaPostajaVlak" android:layout_height="wrap_content"></EditText>
+    <TextView style="@style/Tekst" android:text="Datum:" android:id="@+id/txt3PostajaVlak" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtDatumVlak" android:layout_height="wrap_content"></EditText>
     <ImageButton android:src="@drawable/train" android:id="@+id/ibtnNajdiVlak" android:layout_height="wrap_content" android:background="@null" android:onClick="klikVlakPostaja" android:clickable="true" android:layout_width="match_parent"></ImageButton>
 </LinearLayout>

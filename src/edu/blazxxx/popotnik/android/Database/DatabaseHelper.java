@@ -19,7 +19,7 @@ public  class DatabaseHelper extends SQLiteOpenHelper
 		+ DBAdapter.CAS_PRIHODA + " TEXT not null, " + DBAdapter.CAS_PRIHODA_PREVOZA + " STRING, "+ DBAdapter.IME + " TEXT not null, " + DBAdapter.IME_LOKALA + " STRING, "
 		+ DBAdapter.NASLOV + " TEXT not null, " + DBAdapter.NASLOV_LOKALA + " STRING, " + DBAdapter.DELOVNIK + " TEXT not null, "
 		+DBAdapter.DELOVNIK_LOKALA + " STRING, " + DBAdapter.STRAN + " TEXT not null, " + DBAdapter.STRAN_LOKALA + " STRING, "
-		+DBAdapter.TELEFON + " TEXT not null, "+ DBAdapter.TELEFON_LOKALA + "STRING);";
+		+DBAdapter.TELEFON + " TEXT not null, "+ DBAdapter.TELEFON_LOKALA + " STRING);";
 
 	DatabaseHelper(Context context) 
 	{
