@@ -55,7 +55,7 @@ public class DBAdapter implements BaseColumns {
 
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
-
+	
 	public DBAdapter(Context ctx) 
 	{
 		this.context = ctx;
@@ -80,64 +80,67 @@ public class DBAdapter implements BaseColumns {
 	public long insertPotovanje(Globalne podatki) 
 	{
 		ContentValues initialValues = new ContentValues();
-		initialValues.put(ZACETEK , "Zacetna"); 
+		//initialValues.put(ZACETEK , "Zacetna"); 
+		//initialValues.put(_ID, podatki.GetDBid());	
 		initialValues.put(ZACETNA_LOKACIJA, podatki.GetZacetek());	
-		initialValues.put(KONEC, "Koncna"); 
+		//initialValues.put(KONEC, "Koncna"); 
 		initialValues.put(KONCNA_LOKACIJA, podatki.GetKonec());
-		initialValues.put(TIP, "Tip"); 
+		//initialValues.put(TIP, "Tip"); 
 		initialValues.put(TIP_PREVOZA, podatki.GetTipPrevoza());
-		initialValues.put(DATUM, "Datum"); 
+		//initialValues.put(DATUM, "Datum"); 
 		initialValues.put(DATUM_PREVOZA, podatki.GetDatum());
-		initialValues.put(NASLOV, "Naslov"); 
-		initialValues.put(CAS_ODHODA, "Odhod"); 
+		//initialValues.put(CAS_ODHODA, "Odhod"); 
 		initialValues.put(CAS_ODHODA_PREVOZA, podatki.GetCasOdhoda());
-		initialValues.put(CAS_PRIHODA, "Prihod"); 
+		//initialValues.put(CAS_PRIHODA, "Prihod"); 
 		initialValues.put(CAS_PRIHODA_PREVOZA, podatki.GetCasPrihoda());
-		initialValues.put(IME, "Ime");
+		//initialValues.put(IME, "Ime");
 		initialValues.put(IME_LOKALA, podatki.GetImeLokala());
-		initialValues.put(NASLOV, "Naslov");
+		//initialValues.put(NASLOV, "Naslov");
 		initialValues.put(NASLOV_LOKALA, podatki.GetNaslov());
-		initialValues.put(DELOVNIK, "Delovnik"); 
+		//initialValues.put(DELOVNIK, "Delovnik"); 
 		initialValues.put(DELOVNIK_LOKALA, podatki.GetDelovnik());
-		initialValues.put(STRAN, "Stran"); 
+		//initialValues.put(STRAN, "Stran"); 
 		initialValues.put(STRAN_LOKALA, podatki.GetStran());
-		initialValues.put(TELEFON, "Telefon"); 
+		//initialValues.put(TELEFON, "Telefon"); 
 		initialValues.put(TELEFON_LOKALA, podatki.GetTelefon());
 		return db.insert(TABLE, null, initialValues);
 	}
 
 	//---deletes a particular title---
-	public boolean deleteStevec(long rowId) 
+	public boolean deletePotovanje(long rowId) 
 	{
 		return db.delete(TABLE, _ID + "=" + rowId, null) > 0;
 	}
-
+	public boolean deleteAll()
+	{
+		return db.delete(TABLE, null, null) > 0;
+	}
 	//---retrieves all the titles---
 	public Cursor getAll() 
 	{
 		return db.query(TABLE, new String[] {
 				_ID,       
-				ZACETEK,     
+				//ZACETEK,     
 				ZACETNA_LOKACIJA,
-				KONEC,
+				//KONEC,
 				KONCNA_LOKACIJA,
-				TIP,
+				//TIP,
 				TIP_PREVOZA,
-				DATUM,
+				//DATUM,
 				DATUM_PREVOZA,
-				CAS_ODHODA,
+				//CAS_ODHODA,
 				CAS_ODHODA_PREVOZA,
-				CAS_PRIHODA,
+				//CAS_PRIHODA,
 				CAS_PRIHODA_PREVOZA,
-				IME,
+				//IME,
 				IME_LOKALA,
-				NASLOV,
+				//NASLOV,
 				NASLOV_LOKALA,
-				DELOVNIK,
+				//DELOVNIK,
 				DELOVNIK_LOKALA,
-				STRAN,
+				//STRAN,
 				STRAN_LOKALA,
-				TELEFON,
+				//TELEFON,
 				TELEFON_LOKALA},    
 				null, 
 				null, 
@@ -152,27 +155,27 @@ public class DBAdapter implements BaseColumns {
 		Cursor mCursor =
 			db.query(true, TABLE, new String[] {
 					_ID,       
-					ZACETEK,     
+					//ZACETEK,     
 					ZACETNA_LOKACIJA,
-					KONEC,
+					//KONEC,
 					KONCNA_LOKACIJA,
-					TIP,
+					//TIP,
 					TIP_PREVOZA,
-					DATUM,
+					//DATUM,
 					DATUM_PREVOZA,
-					CAS_ODHODA,
+					//CAS_ODHODA,
 					CAS_ODHODA_PREVOZA,
-					CAS_PRIHODA,
+					//CAS_PRIHODA,
 					CAS_PRIHODA_PREVOZA,
-					IME,
+					//IME,
 					IME_LOKALA,
-					NASLOV,
+					//NASLOV,
 					NASLOV_LOKALA,
-					DELOVNIK,
+					//DELOVNIK,
 					DELOVNIK_LOKALA,
-					STRAN,
+					//STRAN,
 					STRAN_LOKALA,
-					TELEFON,
+					//TELEFON,
 					TELEFON_LOKALA}, 
 					_ID + "=" + rowId, 
 					null,
@@ -190,28 +193,27 @@ public class DBAdapter implements BaseColumns {
 	public boolean updatePotovanje(Globalne podatki) 
 	{
 		ContentValues args = new ContentValues();
-		args.put(ZACETEK , "Zacetna"); 
+		//args.put(ZACETEK , "Zacetna"); 
 		args.put(ZACETNA_LOKACIJA, podatki.GetZacetek()); 
-		args.put(KONEC, "Koncna"); 
+	    //args.put(KONEC, "Koncna"); 
 		args.put(KONCNA_LOKACIJA, podatki.GetKonec());
-		args.put(TIP, "Tip"); 
+		//args.put(TIP, "Tip"); 
 		args.put(TIP_PREVOZA, podatki.GetTipPrevoza());
-		args.put(DATUM, "Datum"); 
+		//args.put(DATUM, "Datum"); 
 		args.put(DATUM_PREVOZA, podatki.GetDatum());
-		args.put(NASLOV, "Naslov"); 
-		args.put(CAS_ODHODA, "Odhod"); 
+		//args.put(CAS_ODHODA, "Odhod"); 
 		args.put(CAS_ODHODA_PREVOZA, podatki.GetCasOdhoda());
-		args.put(CAS_PRIHODA, "Prihoda"); 
+		//args.put(CAS_PRIHODA, "Prihoda"); 
 		args.put(CAS_PRIHODA_PREVOZA, podatki.GetCasPrihoda());
-		args.put(IME, "Ime");
+		//args.put(IME, "Ime");
 		args.put(IME_LOKALA, podatki.GetImeLokala());
-		args.put(NASLOV, "Naslov"); 
+		//args.put(NASLOV, "Naslov"); 
 		args.put(NASLOV_LOKALA, podatki.GetNaslov());
-		args.put(DELOVNIK, "Delovnik"); 
+		//args.put(DELOVNIK, "Delovnik"); 
 		args.put(DELOVNIK_LOKALA, podatki.GetDelovnik());
-		args.put(STRAN, "Stran"); 
+		//args.put(STRAN, "Stran"); 
 		args.put(STRAN_LOKALA, podatki.GetStran());
-		args.put(TELEFON, "Telefon"); 
+		//args.put(TELEFON, "Telefon"); 
 		args.put(TELEFON_LOKALA, podatki.GetTelefon());
 		return db.update(TABLE, args, 
 				_ID + "=" + podatki.GetID(), null) > 0;

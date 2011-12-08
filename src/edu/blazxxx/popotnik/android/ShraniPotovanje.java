@@ -215,6 +215,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 			zacasni.SetTelefon(app.GetTelefon());
 			Toast.makeText(this,zacasni.GetZacetek() + "  in  " + zacasni.GetKonec(),Toast.LENGTH_SHORT).show();
 			addDB(zacasni);
+			ShraniPotovanje.this.finish();
 		}
 
 

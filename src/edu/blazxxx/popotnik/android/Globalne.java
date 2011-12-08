@@ -7,12 +7,13 @@ public class Globalne extends Application{
 	public String tipPrevoza="", zacetek="",konec="",stanje="",casPrihoda="",casOdhoda="",datum="";
 	public String imeLokala="",naslov="",delovnik="",stran="",telefon="";
 	public int id;
+	public long DBid;
 	private long dbID;
-	int stevec=0;
+	final static long NO_ID=-1;
+	public int stevilo=0;
 	public Globalne()
 	{
-		id=stevec;
-		dbID=0;
+		id=(int) NO_ID;
 		tipPrevoza="";
 		zacetek="";
 		konec="";
@@ -25,6 +26,22 @@ public class Globalne extends Application{
 		delovnik="";
 		stran="";
 		telefon="";
+	}
+	public long GetDBid()
+	{
+		return DBid;
+	}
+	public void SetDBid(long value)
+	{
+		DBid=value;
+	}
+	public int GetStevilo()
+	{
+		return stevilo;
+	}
+	public void SetStevilo(int value)
+	{
+		stevilo=value;
 	}
 	public String GetZacetek()
 	{
@@ -131,7 +148,6 @@ public class Globalne extends Application{
 		return telefon;
 	}
 	public void setDbID(long dbID) {
-		stevec++;
 		this.dbID = dbID;
 	}
 	public long getDbID() {
