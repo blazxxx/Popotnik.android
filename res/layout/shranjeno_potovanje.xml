@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical" android:background="@drawable/size_android">
+	<TextView android:textSize="20sp" android:textColor="#33FF00" android:text="Podatki o:" android:id="@+id/txtShrani1"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<Spinner android:id="@+id/spinner1" android:layout_width="match_parent"
+		android:layout_height="wrap_content"></Spinner>
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:layout_width="match_parent" android:layout_height="wrap_content"></LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+
+		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+			android:id="@+id/txtShranjeno2" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
+			android:id="@+id/txtShranjeno3" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+
+		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+			android:id="@+id/txtShranjeno4" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
+			android:id="@+id/txtShranjeno5" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+
+		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+			android:id="@+id/txtShranjeno6" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
+			android:id="@+id/txtShranjeno7" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+
+		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+			android:id="@+id/txtShranjeno8" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
+			android:id="@+id/txtShranjeno9" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+
+		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+			android:id="@+id/txtShranjeno10" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
+			android:id="@+id/txtShranjeno11" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+
+		<TextView style="@style/tekstSpremeniShrani" android:text="TextView"
+			android:id="@+id/txtShranjeno12" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+		<TextView style="@style/tekstVrednosti" android:text="TextView"
+			android:id="@+id/txtShranjeno13" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout3"
+		android:layout_height="wrap_content" android:layout_width="match_parent">
+		<Button android:text="Shrani" android:id="@+id/btnShraniShranjeno"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_weight="1"></Button>
+		<Button android:text="Spremeni" android:id="@+id/btnSpremeniShranjeno"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_weight="1"></Button>
+			<Button android:text="Odstrani" android:id="@+id/btnOdstraniShranjeno"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_weight="1"></Button>
+	</LinearLayout>
+</LinearLayout>
