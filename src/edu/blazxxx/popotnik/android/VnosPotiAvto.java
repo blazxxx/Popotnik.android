@@ -12,15 +12,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class VnosPotiAvto extends Activity{
 	
 	Globalne app;
 	public String konecAvtoStr;
-	EditText konecAvto,casOdhoda,datum;
+	EditText konecAvto;
+	TimePicker casOdhoda;
+	DatePicker datum;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,8 +33,8 @@ public class VnosPotiAvto extends Activity{
         app =(Globalne) getApplication();
         
         konecAvto = (EditText) findViewById(R.id.edittxtKonec);
-        casOdhoda = (EditText) findViewById(R.id.edittxtCasOdhoda);
-        datum = (EditText) findViewById(R.id.edittxtDatum);
+        casOdhoda = (TimePicker) findViewById(R.id.timePicker1Avto);
+        datum = (DatePicker) findViewById(R.id.datePicker1Avto);
         
         
     }
@@ -69,18 +73,21 @@ public class VnosPotiAvto extends Activity{
 	{
     	if (v.getId()==R.id.ibtnNajdi)
 		{
-    			if((datum.getText().toString()=="")||(konecAvto.getText().toString()=="")||(casOdhoda.getText().toString()==""))
+    		String datumStr = "" + datum.getDayOfMonth() + ". " + datum.getMonth()+1 + ". " + datum.getYear();
+    		String ura = "" + casOdhoda.getCurrentHour() + ":" + casOdhoda.getCurrentMinute();
+    			
+    		if((datumStr=="")||(konecAvto.getText().toString()=="")||(ura==""))
     			{
     				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
     				VnosPotiAvto.this.setResult(RESULT_CANCELED);
-    				//VnosPotiAvto.this.finish();
     			}
     			else
     			{
     				app.SetKonec(konecAvto.getText().toString());
-    				app.SetCasOdhoda(casOdhoda.getText().toString());
-    				app.SetDatum(datum.getText().toString());
+    				app.SetCasOdhoda(ura);
+    				app.SetDatum(datumStr);
     				app.SetStanje("Pot avto");
+    				//Toast.makeText(this,ura,Toast.LENGTH_SHORT).show();
     				VnosPotiAvto.this.setResult(RESULT_OK);
     				VnosPotiAvto.this.finish();
     			}

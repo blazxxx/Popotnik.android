@@ -20,8 +20,7 @@ import android.widget.Toast;
 public class MenuPreferencesAvto extends Activity implements OnItemClickListener{
 	private static final int VNESENA_POT_ID=0;
 	private static final int SHRANI_POTOVANJE_ID=1;
-private String[] Vsebina = {"Vnesi potovanje",
-//"Prikaži pot",
+private String[] Vsebina = {"Podatki potovanja",
 "Prikaži lokale",
 "Shrani potovanje",
 "Shranjena potovanja",
@@ -35,6 +34,8 @@ Globalne app;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listmenu);
         app =(Globalne) getApplication();
+        app.SetStanje("");
+        app.SetStanje("Pot avto");
         ListView list = (ListView)findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listitem, Vsebina);
         list.setAdapter(adapter);
@@ -45,7 +46,7 @@ Globalne app;
       	    
       	   Intent myIntent = null;
       	    
-      	   if(((TextView) view).getText().equals("Vnesi potovanje")){
+      	   if(((TextView) view).getText().equals("Podatki potovanja")){
       	    myIntent = new Intent(view.getContext(), VnosPotiAvto.class);
       	    startActivityForResult(myIntent, VNESENA_POT_ID);
       	   }
@@ -57,9 +58,10 @@ Globalne app;
       	   }
 
       	   if(((TextView) view).getText().equals("Prikaži lokale")){
-      	    myIntent = new Intent(view.getContext(), Avto.class);
-      	    MenuPreferencesAvto.this.finish();
-      	    startActivity(myIntent);
+      		  app.SetStanje("");
+      		   app.SetStanje("Lokali");
+      		 MenuPreferencesAvto.this.setResult(RESULT_OK);
+				MenuPreferencesAvto.this.finish();
       	   }
       	   if(((TextView) view).getText().equals("Shrani potovanje")){
          	    myIntent = new Intent(view.getContext(), ShraniPotovanje.class);
@@ -99,7 +101,6 @@ Globalne app;
       	 });
     }
 
-	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		
 	}

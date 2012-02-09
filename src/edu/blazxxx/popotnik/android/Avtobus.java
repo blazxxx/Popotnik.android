@@ -26,11 +26,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Avtobus extends MapActivity {
+public class Avtobus extends MapActivity implements OnClickListener {
 	Globalne app;
 
 	MapView myMapView;
@@ -38,6 +40,7 @@ public class Avtobus extends MapActivity {
 	Location location;
 	LocationManager locationManager;
 	List<Address> addresses;
+	Button moznosti;
   @Override
   protected boolean isRouteDisplayed() 
   {
@@ -59,6 +62,8 @@ public class Avtobus extends MapActivity {
     app =(Globalne) getApplication();
 	app.SetTipPrevoza("");
 	app.SetTipPrevoza("Avtobus");
+	
+
 	
     MapView myMapView = (MapView)findViewById(R.id.myMapView);
     View zoom = myMapView.getZoomControls();
@@ -176,7 +181,7 @@ public class Avtobus extends MapActivity {
 		case TEST_START_ACTIVITY_ID: 
 			if(resultCode==-1)
 			{
-				if(app.GetStanje().toString() == "Pot vlak")
+				if(app.GetStanje().toString() == "Pot avtobus")
 				{
 					Geocoder geoCoder = new Geocoder(this, Locale.getDefault());    
 					try {
@@ -202,5 +207,9 @@ public class Avtobus extends MapActivity {
 				}
 			}
 		}
+	}
+public void onClick(View arg0) {
+		
+
 	}
 }

@@ -36,7 +36,7 @@ public class Popotnik extends Activity{
         switch (requestCode) 
         {
             case TEST_START_ACTIVITY_ID: 
-            	Toast toast = Toast.makeText(this,"OK"+resultCode, Toast.LENGTH_LONG);
+            	//Toast toast = Toast.makeText(this,"OK"+resultCode, Toast.LENGTH_LONG);
             	//toast.show();
             	break;
     	
@@ -53,12 +53,12 @@ public class Popotnik extends Activity{
 		}
 		if (v.getId()==R.id.ibtnAvtobus)
 		{
-			drugi = new Intent(this,Avtobus.class);
+			drugi = new Intent(this,MenuPreferencesAvtobus.class);
 			startActivity(drugi);
 		}
 		if (v.getId()==R.id.ibtnVlak)
 		{
-			tretji = new Intent(this,Vlak.class);
+			tretji = new Intent(this,MenuPreferencesVlak.class);
 			startActivity(tretji);
 		}
 	}
@@ -74,7 +74,6 @@ public class Popotnik extends Activity{
   			.setCancelable(false)
   			.setPositiveButton("Da", new DialogInterface.OnClickListener() {
 
-  				@Override
   				public void onClick(DialogInterface dialog, int id) {
   					
   					Popotnik.this.setResult(RESULT_CANCELED);

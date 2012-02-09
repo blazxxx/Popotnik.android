@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import edu.blazxxx.popotnik.android.R;
-import edu.blazxxx.popotnik.android.R.id;
+//import edu.blazxxx.popotnik.android.R;
+//import edu.blazxxx.popotnik.android.R.id;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -26,17 +26,20 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Vlak extends MapActivity {
+public class Vlak extends MapActivity implements OnClickListener{
 	Globalne app;
 	MapView myMapView;
 	GeoPoint p;
 	Location location;
 	LocationManager locationManager;
 	List<Address> addresses;
+	Button moznosti;
   @Override
   protected boolean isRouteDisplayed() 
   {
@@ -58,6 +61,8 @@ public class Vlak extends MapActivity {
 	app.SetTipPrevoza("");
 	app.SetTipPrevoza("Vlak");
 
+
+	
     MapView myMapView = (MapView)findViewById(R.id.myMapView);
     mapController = myMapView.getController();
 
@@ -191,8 +196,8 @@ public class Vlak extends MapActivity {
 							myMapView.invalidate();
 						}    
 					} catch (IOException e) {
-						Toast toast = Toast.makeText(this,"NAPAKA!!! NE NAJDE LOKACIJE!!!" , Toast.LENGTH_LONG);
-						toast.show();
+						/*Toast toast = Toast.makeText(this,"NAPAKA!!! NE NAJDE LOKACIJE!!!" , Toast.LENGTH_LONG);
+						toast.show();*/
 						e.printStackTrace();
 					}
 				}
@@ -202,5 +207,10 @@ public class Vlak extends MapActivity {
 				}
 			}
 		}
+	}
+	
+	public void onClick(View arg0) {
+
+		
 	}
 }

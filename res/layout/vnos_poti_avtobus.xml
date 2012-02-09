@@ -4,10 +4,10 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical"  android:background="@drawable/size_android">
     <TextView style="@style/Tekst" android:text="Začetna destinacija:" android:id="@+id/txt1PostajaAvtobus" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-    <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtZacetnaPostajaAvtobus" android:layout_height="wrap_content"></EditText>
+    <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/spinner1Avtobus"></Spinner>
     <TextView style="@style/Tekst" android:text="Končna destinacija:" android:id="@+id/txt2PostajaAvtobus" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-    <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtKoncnaPostajaAvtobus" android:layout_height="wrap_content"></EditText>
+    <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/spinner2Avtobus"></Spinner>
     <TextView style="@style/Tekst" android:text="Datum:" android:id="@+id/txt3PostajaAvtobus" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-    <EditText android:layout_width="match_parent" android:text="" android:id="@+id/edittxtDatumAvtobus" android:layout_height="wrap_content"></EditText>
+    <DatePicker android:id="@+id/datePicker1Avtobus" android:layout_height="wrap_content" android:layout_width="match_parent"></DatePicker>
     <ImageButton android:src="@drawable/travel_bus" android:id="@+id/ibtnNajdiAvtobus" android:layout_height="wrap_content" android:background="@null" android:onClick="klikAvtobusPostaja" android:clickable="true" android:layout_width="match_parent"></ImageButton>
 </LinearLayout>

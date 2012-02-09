@@ -17,10 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MenuPreferencesVlak extends Activity implements OnItemClickListener{
-private String[] Vsebina = {"Poišèi najbližjo postajo",
-"Doloèi pot",
-"Vozni red",
-"Prikaži lokale",
+private String[] Vsebina = {//"Poišèi najbližjo postajo",
+"Vozni redi",
+"Zamude v prometu",
 "Shrani potovanje",
 "Shranjena potovanja",
 "Novo potovanje",
@@ -60,11 +59,16 @@ Globalne app;
         	    MenuPreferencesVlak.this.finish();
         	   }
       	 
-      	   if(((TextView) view).getText().equals("Vozni red")){
-      	    myIntent = new Intent(view.getContext(), VozniRedVlakov.class);
+      	   if(((TextView) view).getText().equals("Vozni redi")){
+      	    myIntent = new Intent(view.getContext(), VnosPotiVlak.class);
       	    startActivity(myIntent);
       	  MenuPreferencesVlak.this.finish();
       	   }
+      	 if(((TextView) view).getText().equals("Zamude v prometu")){
+       	    myIntent = new Intent(view.getContext(), ZamudePrometa.class);
+       	    startActivity(myIntent);
+       	  MenuPreferencesVlak.this.finish();
+       	   }
 
       	   if(((TextView) view).getText().equals("Prikaži lokale")){
       	    myIntent = new Intent(view.getContext(), Vlak.class);
@@ -107,7 +111,6 @@ Globalne app;
       	 });
     }
 
-	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
 		

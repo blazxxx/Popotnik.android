@@ -1,7 +1,61 @@
 <resources>
 
-    <string-array name="podatki">
-        <item>Potovanju</item>
-        <item>Lokalu</item>
-    </string-array>
+	<string-array name="podatki">
+		<item>Potovanju</item>
+		<item>Lokalu</item>
+	</string-array>
+
+	<string-array name="podatkiVozniredAvtobus">
+		<item>Ljubljana</item>
+		<item>Maribor</item>
+		<item>Slovenska Bistrica</item>
+		<item>Laporje</item>
+		<item>Makole</item>
+		<item>Majšperk</item>
+		<item>Kočno ob Ložnici</item>
+		<item>Pretrež</item>
+		<item>Poljčane</item>
+		<item>Drumlažno</item>
+		<item>Žabljek</item>
+		<item>Razgor</item>
+		<item>Ljubljana</item>
+		<item>Maribor</item>
+		<item>Slovenska Bistrica</item>
+		<item>Laporje</item>
+		<item>Makole</item>
+		<item>Majšperk</item>
+		<item>Kočno ob Ložnici</item>
+		<item>Pretrež</item>
+		<item>Poljčane</item>
+		<item>Drumlažno</item>
+		<item>Žabljek</item>
+		<item>Razgor</item>
+	</string-array>
+	
+	<string-array name="podatkiVozniredVlak">
+		<item>Ljubljana</item>
+		<item>Maribor</item>
+		<item>Zidani Most</item>
+		<item>Dobova</item>
+		<item>Slovenska Bistrica</item>
+		<item>Pragersko</item>
+		<item>Poljčane</item>
+		<item>Orehova vas</item>
+		<item>Rače</item>
+		<item>Hoče</item>
+		<item>Maribor Tezno</item>
+		<item>Dolga gora</item>
+		<item>Ljubljana</item>
+		<item>Maribor</item>
+		<item>Slovenska Bistrica</item>
+		<item>Laporje</item>
+		<item>Makole</item>
+		<item>Majšperk</item>
+		<item>Kočno ob Ložnici</item>
+		<item>Pretrež</item>
+		<item>Poljčane</item>
+		<item>Drumlažno</item>
+		<item>Žabljek</item>
+		<item>Razgor</item>
+	</string-array>
 </resources>

@@ -1,9 +1,10 @@
 package edu.blazxxx.popotnik.android;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,42 +13,38 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import edu.blazxxx.popotnik.android.Database.DBAdapter;
 
 public class ShranjenaPotovanja extends Activity{
 	DBAdapter db;
-	ArrayAdapter<String> adapter;
+	PotovanjaArrayAdapter adapter;
 	ListView list;
 	public static final int TEST_START_ACTIVITY_ID = 1;
 	Intent prvi,drugi,tretji;
 	Globalne app;
+	int[] ID;
 	
 	@Override
 	public void onStart() {
 		super.onStart();
-		NaloziVsaPotovanja();
+		//NaloziVsaPotovanja();
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
 		NaloziVsaPotovanja();
+		list.invalidate();
 	
 
 	}
 	@Override
 	public void onPause() {
 		super.onPause();
-		NaloziVsaPotovanja();
+		//NaloziVsaPotovanja();
 	
 	}
 	
@@ -55,21 +52,19 @@ public class ShranjenaPotovanja extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listmenu);
+        list = (ListView)findViewById(R.id.list);
         app =(Globalne) getApplication();
         db = new DBAdapter(this);
         NaloziVsaPotovanja();
         
         list.setOnItemClickListener(new OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-      	    
+      	    Potovanje t = adapter.getItem(position);
        	   Intent myIntent = null;
-       	
-       	    app.SetDBid(id+1); 
-       	    Log.i("ID",String.valueOf(id));
+       	    app.SetDBid(t.getDbID()); 
+       	    Log.i("ID",String.valueOf(t.getDbID()));
        		myIntent = new Intent(view.getContext(), ShranjenoPotovanje.class);
-      	    startActivity(myIntent);
-       	    
-
+      	    startActivity(myIntent); 
        	  }
        	 });
         
@@ -104,28 +99,39 @@ public class ShranjenaPotovanja extends Activity{
 		c.isAfterLast();
 		Globalne tmp = new Globalne();
 		int stevilo = c.getCount();
+		ID = new int[stevilo];
 		app.SetStevilo(stevilo);
-		String[] vsebina = new String[stevilo];
+		int stevec=1;
+		//String[] vsebina = new String[stevilo];
+		ArrayList<Potovanje> lista = new ArrayList<Potovanje>();
+		Potovanje tmpp;
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext())
+		{
+			int id=c.getInt(DBAdapter.POS__ID);
+			ID[stevec-1]=id;
+			tmpp = new Potovanje();
+			tmpp.setDbID(c.getInt(DBAdapter.POS__ID));
+			tmpp.setTipPrevoza(c.getString(DBAdapter.POS__TIP));
+			tmpp.setDatum(c.getString(DBAdapter.POS_DATUM));
+			tmpp.setStanje("Potovanje " + stevec);
+			tmpp.setZacetek(c.getString(DBAdapter.POS_ZACETEK));
+			tmpp.setKonec(c.getString(DBAdapter.POS_KONEC));
+			//dodsj ostale
+			lista.add(tmpp);
+		//	vsebina[stevec]=id+" "+c.getString(DBAdapter.POS_DATUM)+" "+"-"+" ";
+			stevec++;
+		}
+		/*String[] vsebina = new String[stevilo];
 		for(int i=1;i<=stevilo;i++)
 		{
 			vsebina[i-1]="Potovanje "+i;
 			Log.i(vsebina[i-1],vsebina[i-1]);
 		}
-		list = (ListView)findViewById(R.id.list);
-        adapter = new ArrayAdapter<String>(this, R.layout.listitemshranjeno, vsebina);
+		*/
+		//list = (ListView)findViewById(R.id.list);
+        adapter = new PotovanjaArrayAdapter(this, R.layout.listitemshranjeno, lista);
         list.setAdapter(adapter);
         db.close();
-		/*Globalne tmp;
-		c = db.getAll();
-		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) 
-		{
-			tmp = new Globalne();
-			tmp.SetZacetek(c.getString(DBAdapter.POS_ZACETEK));
-			tmp.SetKonec(c.getString(DBAdapter.POS_KONEC));
-			tmp.setDbID(c.getLong(DBAdapter.POS__ID));
-			//lista.add(tmp); 
-		}
-		c.close();
-		*/
 	}
+  	
 }

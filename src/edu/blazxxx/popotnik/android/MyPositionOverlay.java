@@ -63,7 +63,7 @@ public class MyPositionOverlay extends Overlay {
 			paint.setFakeBoldText(true);
 
 			Paint backPaint = new Paint();
-			backPaint.setARGB(175, 50, 50, 50);
+			backPaint.setARGB(250, 50, 50, 50);
 			backPaint.setAntiAlias(true);
 
 			RectF backRect = new RectF(point.x + 2 + mRadius, 
@@ -76,6 +76,7 @@ public class MyPositionOverlay extends Overlay {
 			canvas.drawText("TUKAJ", 
 					point.x + 2*mRadius+2, point.y, 
 					paint);
+			
 
 			if(locations.size() != 0)
 			{
@@ -97,9 +98,9 @@ public class MyPositionOverlay extends Overlay {
 					Point tocka2 = new Point();
 					projection.toPixels(gp2, tocka2);
 					Paint barva = new Paint();
-					barva.setARGB(120, 255, 0, 162);
+					barva.setARGB(250, 0, 0, 255);
 					barva.setStrokeWidth(5);
-					canvas.drawLine(tocka1.x, tocka1.y, tocka2.x, tocka2.y, barva);
+					//canvas.drawLine(tocka1.x, tocka1.y, tocka2.x, tocka2.y, barva);
 				}
 			}
 		}

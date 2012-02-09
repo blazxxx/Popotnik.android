@@ -1,11 +1,18 @@
 package edu.blazxxx.popotnik.android;
 
+import java.util.List;
+
+import com.google.android.maps.GeoPoint;
+
 import android.app.Application;
 
 public class Globalne extends Application{
 	
 	public String tipPrevoza="", zacetek="",konec="",stanje="",casPrihoda="",casOdhoda="",datum="";
 	public String imeLokala="",naslov="",delovnik="",stran="",telefon="";
+	public double tockaPricetkaLat;
+	
+	public double tockaPricetkaLon;
 	public int id;
 	public long DBid;
 	private long dbID;
@@ -26,6 +33,18 @@ public class Globalne extends Application{
 		delovnik="";
 		stran="";
 		telefon="";
+	}
+	public double getTockaPricetkaLat() {
+		return tockaPricetkaLat;
+	}
+	public void setTockaPricetkaLat(double tockaPricetkaLat) {
+		this.tockaPricetkaLat = tockaPricetkaLat;
+	}
+	public double getTockaPricetkaLon() {
+		return tockaPricetkaLon;
+	}
+	public void setTockaPricetkaLon(double tockaPricetkaLon) {
+		this.tockaPricetkaLon = tockaPricetkaLon;
 	}
 	public long GetDBid()
 	{

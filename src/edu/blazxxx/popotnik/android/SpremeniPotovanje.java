@@ -78,7 +78,7 @@ public class SpremeniPotovanje extends Activity implements OnClickListener{
 		enajstiEdit.setText(app.GetImeLokala());
 		SpremeniPotovanje.this.setResult(RESULT_OK);
 		podatek.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
+			
 			public void onItemSelected(AdapterView<?> parentView, View
 					selectedItemView, int position, long id) {
 				if(position==0)
@@ -149,7 +149,7 @@ public class SpremeniPotovanje extends Activity implements OnClickListener{
 				}
 			}
 
-			@Override
+			
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
 
@@ -182,7 +182,7 @@ public class SpremeniPotovanje extends Activity implements OnClickListener{
 
 		return false;
 	}
-	@Override
+	
 	public void onClick(View arg0) {
 		if (arg0.getId()==R.id.btnSpremeniSpremeni) 
 		{

@@ -1,18 +1,7 @@
 package edu.blazxxx.popotnik.android;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
-import com.google.android.maps.GeoPoint;
-
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,11 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,13 +29,9 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 
 	
 	public void addDB(Globalne g) {
-		
-
-
-		
 		db.open();
-		Toast toast = Toast.makeText(this,g.GetZacetek() + "  "  + g.GetKonec(), Toast.LENGTH_LONG);
-		toast.show();
+		/*Toast toast = Toast.makeText(this,g.GetZacetek() + "  "  + g.GetKonec(), Toast.LENGTH_LONG);
+		toast.show();*/
 		g.setDbID(db.insertPotovanje(g));
 		db.close();	
 	}
@@ -108,7 +91,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 		db = new DBAdapter(this);
 
 		podatek.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
+			
 			public void onItemSelected(AdapterView<?> parentView, View
 					selectedItemView, int position, long id) {
 				if(position==0)
@@ -159,7 +142,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 				}
 			}
 
-			@Override
+			
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
 
@@ -192,7 +175,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 
 		return false;
 	}
-	@Override
+	
 	public void onClick(View arg0) {
 		if (arg0.getId()==R.id.btnSpremeni) 
 		{
@@ -213,7 +196,7 @@ public class ShraniPotovanje extends Activity implements OnClickListener{
 			zacasni.SetDelovnik(app.GetDelovnik());
 			zacasni.SetStran(app.GetStran());
 			zacasni.SetTelefon(app.GetTelefon());
-			Toast.makeText(this,zacasni.GetZacetek() + "  in  " + zacasni.GetKonec(),Toast.LENGTH_SHORT).show();
+			//Toast.makeText(this,zacasni.GetZacetek() + "  in  " + zacasni.GetKonec(),Toast.LENGTH_SHORT).show();
 			addDB(zacasni);
 			ShraniPotovanje.this.finish();
 		}

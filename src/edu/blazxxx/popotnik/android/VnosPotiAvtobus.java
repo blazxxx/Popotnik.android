@@ -11,16 +11,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class VnosPotiAvtobus extends Activity{
 	
 	Globalne app;
 	public String zacetekAvtobusStr,konecAvtobusStr;
-	EditText zacetekAvtobus,konecAvtobus,datum;
+	DatePicker datum;
+	ArrayAdapter adapter;
+	Spinner spinnerZacetek, spinnerKonec;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,9 +35,19 @@ public class VnosPotiAvtobus extends Activity{
         setContentView(R.layout.vnos_poti_avtobus);
         app =(Globalne) getApplication();
         
-        zacetekAvtobus = (EditText) findViewById(R.id.edittxtZacetnaPostajaAvtobus);
+        spinnerZacetek = (Spinner) findViewById(R.id.spinner1Avtobus);
+        spinnerKonec = (Spinner) findViewById(R.id.spinner2Avtobus);
+        datum = (DatePicker) findViewById(R.id.datePicker1Avtobus);
+        adapter = ArrayAdapter.createFromResource(
+				this, R.array.podatkiVozniredAvtobus, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerZacetek.setAdapter(adapter);
+        spinnerKonec.setAdapter(adapter);
+        /*zacetekAvtobus = (EditText) findViewById(R.id.edittxtZacetnaPostajaAvtobus);
         konecAvtobus = (EditText) findViewById(R.id.edittxtKoncnaPostajaAvtobus);
-        datum = (EditText) findViewById(R.id.edittxtDatumAvtobus);
+        datum = (EditText) findViewById(R.id.edittxtDatumAvtobus);*/
+        
+
         
     }
     
@@ -68,22 +85,22 @@ public class VnosPotiAvtobus extends Activity{
 	{
     	if (v.getId()==R.id.ibtnNajdiAvtobus)
 		{
-    			if((datum.getText().toString()=="")||(konecAvtobus.getText().toString()=="")||(zacetekAvtobus.getText().toString()==""))
-    			{
-    				Toast.makeText(this,"Ni vnešenih vseh potrebnih podatkov!!",Toast.LENGTH_SHORT).show();
-    				VnosPotiAvtobus.this.setResult(RESULT_CANCELED);
-    				VnosPotiAvtobus.this.finish();
-    			}
-    			else
-    			{
-    				app.SetKonec(konecAvtobus.getText().toString());
-    				app.SetZacetek(zacetekAvtobus.getText().toString());
-    				app.SetDatum(datum.getText().toString());
+    		int mesec =datum.getMonth()+1;
+			int dan = datum.getDayOfMonth();
+			int leto = datum.getYear();
+			String datumStr = "" + dan +". " + mesec + ". " + leto;
+    				
+    			
+    				app.SetKonec(spinnerKonec.getSelectedItem().toString());
+    				app.SetZacetek(spinnerZacetek.getSelectedItem().toString());
+    				//Toast.makeText(this,spinnerZacetek.getSelectedItem().toString()+ "  " + spinnerKonec.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
+    				//Toast.makeText(this,"" + app.GetZacetek(),Toast.LENGTH_LONG).show();
+    				app.SetDatum(datumStr);
     				app.SetStanje("");
     				app.SetStanje("Pot avtobus");
-    				VnosPotiAvtobus.this.setResult(RESULT_OK);
-    				VnosPotiAvtobus.this.finish();
-    			}
+    				Intent myIntent = new Intent(this, VozniRedAvtobusov.class);
+            	    startActivity(myIntent);
+    				
     	
 		}
 	

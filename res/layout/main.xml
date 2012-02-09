@@ -24,4 +24,5 @@
         <TextView android:text="    " android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_width="wrap_content"></TextView>
         <ImageButton android:src="@drawable/train" android:id="@+id/ibtnVlak" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@null" android:onClick="naKlik" android:clickable="true"></ImageButton>
     </LinearLayout>
+    
   </LinearLayout>

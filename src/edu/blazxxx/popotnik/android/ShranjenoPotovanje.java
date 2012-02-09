@@ -50,8 +50,8 @@ public class ShranjenoPotovanje extends Activity implements OnClickListener{
 
 
 		db.open();
-		Toast toast = Toast.makeText(this,g.GetZacetek() + "  "  + g.GetKonec(), Toast.LENGTH_LONG);
-		toast.show();
+		/*Toast toast = Toast.makeText(this,g.GetZacetek() + "  "  + g.GetKonec(), Toast.LENGTH_LONG);
+		toast.show();*/
 		g.setDbID(db.insertPotovanje(g));
 		db.close();	
 	}
@@ -126,6 +126,7 @@ public class ShranjenoPotovanje extends Activity implements OnClickListener{
 		zacasna.SetDelovnik(novi.getString(DBAdapter.POS__DELOVNIK));
 		zacasna.SetStran(novi.getString(DBAdapter.POS_STRAN));
 		zacasna.SetTelefon(novi.getString(DBAdapter.POS_TELEFON));
+		zacasna.setDbID(novi.getInt(DBAdapter.POS__ID));
 		app.SetZacetek(zacasna.GetZacetek());
 		app.SetKonec(zacasna.GetKonec());
 		app.SetTipPrevoza(zacasna.GetTipPrevoza());
@@ -137,9 +138,10 @@ public class ShranjenoPotovanje extends Activity implements OnClickListener{
 		app.SetTelefon(zacasna.GetTelefon());
 		app.SetCasOdhoda(zacasna.GetCasOdhoda());
 		app.SetCasPrihoda(zacasna.GetCasPrihoda());
+		app.SetDBid(zacasna.getDbID());
 		db.close();
 		podatek.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
+			
 			public void onItemSelected(AdapterView<?> parentView, View
 					selectedItemView, int position, long id) {
 				if(position==0)
@@ -190,7 +192,7 @@ public class ShranjenoPotovanje extends Activity implements OnClickListener{
 				}
 			}
 
-			@Override
+			
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
 
@@ -223,7 +225,7 @@ public class ShranjenoPotovanje extends Activity implements OnClickListener{
 
 		return false;
 	}
-	@Override
+	
 	public void onClick(View arg0) {
 		if (arg0.getId()==R.id.btnSpremeniShranjeno) 
 		{
@@ -244,54 +246,21 @@ public class ShranjenoPotovanje extends Activity implements OnClickListener{
 			zacasni.SetDelovnik(app.GetDelovnik());
 			zacasni.SetStran(app.GetStran());
 			zacasni.SetTelefon(app.GetTelefon());
-			Toast.makeText(this,zacasni.GetZacetek() + "  in  " + zacasni.GetKonec(),Toast.LENGTH_SHORT).show();
+			zacasni.setDbID(app.getDbID());
+			//Toast.makeText(this,zacasni.GetZacetek() + "  in  " + zacasni.GetKonec(),Toast.LENGTH_SHORT).show();
+			db.open();
+			db.deletePotovanje((int)app.GetDBid());
+			db.close();
 			addDB(zacasni);
+			ShranjenoPotovanje.this.finish();
 		}
 		if (arg0.getId()==R.id.btnOdstraniShranjeno)
 		{
 
 			db.open();
-			ArrayList<Globalne> lista=new ArrayList<Globalne>();
-			Globalne nekaj;
+			//ArrayList<Globalne> lista=new ArrayList<Globalne>();
+			//Globalne nekaj;
 			db.deletePotovanje((int)app.GetDBid());
-			Cursor novi = db.getAll();
-			
-			for (novi.moveToFirst(); !novi.isAfterLast(); novi.moveToNext()) {
-				Log.i("Tukaj sem","ZOPET");
-				nekaj = new Globalne();
-				nekaj.SetZacetek(novi.getString(DBAdapter.POS_ZACETEK));
-				nekaj.SetKonec(novi.getString(DBAdapter.POS_KONEC));
-				nekaj.SetTipPrevoza(novi.getString(DBAdapter.POS__TIP));
-				nekaj.SetDatum(novi.getString(DBAdapter.POS_DATUM));
-				nekaj.SetCasOdhoda(novi.getString(DBAdapter.POS_ODHOD));
-				nekaj.SetCasPrihoda(novi.getString(DBAdapter.POS__PRIHOD));
-				nekaj.SetImeLokala(novi.getString(DBAdapter.POS_IME));
-				nekaj.SetNaslov(novi.getString(DBAdapter.POS_NASLOV));
-				nekaj.SetDelovnik(novi.getString(DBAdapter.POS__DELOVNIK));
-				nekaj.SetStran(novi.getString(DBAdapter.POS_STRAN));
-				nekaj.SetTelefon(novi.getString(DBAdapter.POS_TELEFON));
-				nekaj.SetDBid(DBAdapter.POS__ID);
-				lista.add(nekaj); 
-			}
-			db.deleteAll();
-			for(int i=0;i<lista.size();i++)
-			{
-				Globalne da=new Globalne();
-				da.SetZacetek(lista.get(i).zacetek);
-				da.SetKonec(lista.get(i).konec);
-				da.SetTipPrevoza(lista.get(i).tipPrevoza);
-				da.SetDatum(lista.get(i).datum);
-				da.SetCasOdhoda(lista.get(i).casOdhoda);
-				da.SetCasPrihoda(lista.get(i).casPrihoda);
-				da.SetImeLokala(lista.get(i).imeLokala);
-				da.SetNaslov(lista.get(i).naslov);
-				da.SetDelovnik(lista.get(i).delovnik);
-				da.SetStran(lista.get(i).stran);
-				da.SetTelefon(lista.get(i).telefon);
-				Log.i("STEVEC",String.valueOf(i));
-				da.SetDBid((long)i+1);
-				addDB(da);
-			}
 			db.close();
 			ShranjenoPotovanje.this.finish();
 		}
